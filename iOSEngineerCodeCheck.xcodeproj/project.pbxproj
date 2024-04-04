@@ -21,6 +21,7 @@
 		F0B454AB2BBEAADF00405276 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454AA2BBEAADF00405276 /* APIClient.swift */; };
 		F0B454AE2BBEC32C00405276 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454AD2BBEC32C00405276 /* APIRequest.swift */; };
 		F0B454B02BBEC35A00405276 /* RepoDetailAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454AF2BBEC35A00405276 /* RepoDetailAPI.swift */; };
+		F0B454B22BBEDA2D00405276 /* SearchRepoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454B12BBEDA2D00405276 /* SearchRepoAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -75,6 +76,7 @@
 		F0B454AA2BBEAADF00405276 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		F0B454AD2BBEC32C00405276 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		F0B454AF2BBEC35A00405276 /* RepoDetailAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailAPI.swift; sourceTree = "<group>"; };
+		F0B454B12BBEDA2D00405276 /* SearchRepoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepoAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 				F0B454AA2BBEAADF00405276 /* APIClient.swift */,
 				F0B454AD2BBEC32C00405276 /* APIRequest.swift */,
 				F0B454AF2BBEC35A00405276 /* RepoDetailAPI.swift */,
+				F0B454B12BBEDA2D00405276 /* SearchRepoAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				F0B454AE2BBEC32C00405276 /* APIRequest.swift in Sources */,
 				BF0A658D244F2A3B00280FA6 /* DetailViewController.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
+				F0B454B22BBEDA2D00405276 /* SearchRepoAPI.swift in Sources */,
 				BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */,
 				F0B454A82BBE4EE600405276 /* Collection+Extension.swift in Sources */,
 				F0B454AB2BBEAADF00405276 /* APIClient.swift in Sources */,

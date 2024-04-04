@@ -12,8 +12,7 @@ class MainViewController: UITableViewController, UISearchBarDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var githubRepos: [[String: Any]] = []
-    
+    var githubRepos: SearchReposResponse = SearchReposResponse(items: [])
     var task: URLSessionTask?
     var searchKeyword: String?
     var selectedIndex: Int?
@@ -39,31 +38,18 @@ class MainViewController: UITableViewController, UISearchBarDelegate {
             return
         }
         if !keyword.isEmpty {
-            let apiUrl: String = "https://api.github.com/search/repositories?q=\(keyword)"
-            if let url = URL(string: apiUrl) {
-                task = URLSession.shared.dataTask(with: url) {[weak self] (data, _, _) in
-                    guard let self = self else {
-                        return
+            let apiClient: APIClient = APIClient(baseURL: URL(string: "https://api.github.com")!)
+            let request: SearchReposRequest = SearchReposRequest(keyword: keyword)
+            apiClient.send(request) { result in
+                switch result {
+                case .success(let response):
+                    DispatchQueue.main.async {
+                        self.githubRepos = response
+                        self.tableView.reloadData()
                     }
-                    if let data = data {
-                        do {
-                            if let obj = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
-                                if let items = obj["items"] as? [[String: Any]] {
-                                    self.githubRepos = items
-                                    DispatchQueue.main.async {
-                                        self.tableView.reloadData()
-                                    }
-                                }
-                            }
-                        } catch {
-                            print("JSON serialization failed: \(error)")
-                        }
-                    } else {
-                        print("Data is nil")
-                    }
+                case .failure(let error):
+                    print(error)
                 }
-            } else {
-                print("URL is nil")
             }
         // これ呼ばなきゃAPIが叩かれない
         task?.resume()
@@ -75,7 +61,9 @@ class MainViewController: UITableViewController, UISearchBarDelegate {
         
         if segue.identifier == "Detail" {
             if let detail = segue.destination as? DetailViewController {
-                detail.vc1 = self
+                if let selectedIndex = selectedIndex {
+                    detail.fullName = githubRepos.items[safe: selectedIndex]?.fullName ?? ""
+                }
             } else {
                 print("segue.destination is nil")
             }
@@ -84,16 +72,15 @@ class MainViewController: UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return githubRepos.count
+        return githubRepos.items.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell: UITableViewCell = UITableViewCell()
-        let repo: [String: Any] = githubRepos[indexPath.row]
-        cell.textLabel?.text = repo["full_name"] as? String ?? ""
-        cell.detailTextLabel?.text = repo["language"] as? String ?? ""
-        cell.tag = indexPath.row
+        if let repo: RepoItem = githubRepos.items[safe: indexPath.row] {
+            cell.textLabel?.text = repo.fullName
+        }
         return cell
         
     }
