@@ -21,17 +21,13 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var forksLabel: UILabel!
     @IBOutlet weak var issuesLabel: UILabel!
     
-    var vc1: MainViewController?
+    var fullName: String?
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let vc1 = vc1, let selectedIndex = vc1.selectedIndex, let repo = vc1.githubRepos[safe: selectedIndex] else {
-            return
-        }
-        
-        titleLabel.text = repo["full_name"] as? String
-        fetchDetailFromName(of: repo["full_name"] as? String)
+        titleLabel.text = fullName
+        fetchDetailFromName(of: fullName)
         
     }
     
