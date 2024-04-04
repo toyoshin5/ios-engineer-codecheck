@@ -30,6 +30,8 @@ opt_in_rules:
 excluded:
 - Pods/
 - Carthage/
+- iOSEngineerCodeCheckTests/
+- iOSEngineerCodeCheckUITests/
 
 # 1行あたりの文字数制限を300に変更
 # プロジェクト作成時にデフォルトで追加されるコメントをひっかけないため
