@@ -75,9 +75,9 @@ class MainViewController: UITableViewController, UISearchBarDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "Detail"{
-            if let dtl = segue.destination as? DetailViewController {
-                dtl.vc1 = self
+        if segue.identifier == "Detail" {
+            if let detail = segue.destination as? DetailViewController {
+                detail.vc1 = self
             } else {
                 print("segue.destination is nil")
             }
@@ -105,10 +105,6 @@ class MainViewController: UITableViewController, UISearchBarDelegate {
         selectedIndex = indexPath.row
         performSegue(withIdentifier: "Detail", sender: self)
         
-    }
-    
-    deinit {
-        task?.cancel()
     }
     
 }
