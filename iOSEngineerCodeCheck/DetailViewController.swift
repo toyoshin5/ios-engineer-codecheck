@@ -50,13 +50,17 @@ class DetailViewController: UIViewController {
         if let owner = repo["owner"] as? [String: Any] {
             if let imgURL = owner["avatar_url"] as? String {
                 if let url = URL(string: imgURL) {
-                    URLSession.shared.dataTask(with: url) { (data, _, _) in
-                           if let data = data, let image = UIImage(data: data) {
-                               DispatchQueue.main.async {
-                                   self.imgView.image = image
-                               }
-                           }
+                    URLSession.shared.dataTask(with: url) { [weak self] (data, _, _) in
+                        guard let self = self else {
+                            return
+                        }
+                        if let data = data, let image = UIImage(data: data) {
+                            DispatchQueue.main.async {
+                                self.imgView.image = image
+                            }
+                        }
                     }.resume()
+
                 }
             }
         }

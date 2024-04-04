@@ -43,7 +43,10 @@ class MainViewController: UITableViewController, UISearchBarDelegate {
         if !keyword.isEmpty {
             let apiUrl: String = "https://api.github.com/search/repositories?q=\(keyword)"
             if let url = URL(string: apiUrl) {
-                task = URLSession.shared.dataTask(with: url) { (data, _, _) in
+                task = URLSession.shared.dataTask(with: url) {[weak self] (data, _, _) in
+                    guard let self = self else {
+                        return
+                    }
                     if let data = data {
                         do {
                             if let obj = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
@@ -102,6 +105,10 @@ class MainViewController: UITableViewController, UISearchBarDelegate {
         selectedIndex = indexPath.row
         performSegue(withIdentifier: "Detail", sender: self)
         
+    }
+    
+    deinit {
+        task?.cancel()
     }
     
 }
