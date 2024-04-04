@@ -73,9 +73,9 @@ class MainViewController: UITableViewController, UISearchBarDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "Detail"{
-            if let dtl = segue.destination as? DetailViewController{
+            if let dtl = segue.destination as? DetailViewController {
                 dtl.vc1 = self
-            }else{
+            } else {
                 print("segue.destination is nil")
             }
         }
@@ -88,8 +88,8 @@ class MainViewController: UITableViewController, UISearchBarDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell()
-        let repo = githubRepos[indexPath.row]
+        let cell: UITableViewCell = UITableViewCell()
+        let repo: [String: Any] = githubRepos[indexPath.row]
         cell.textLabel?.text = repo["full_name"] as? String ?? ""
         cell.detailTextLabel?.text = repo["language"] as? String ?? ""
         cell.tag = indexPath.row

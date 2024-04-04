@@ -6,6 +6,7 @@
 //  Copyright © 2024 YUMEMI Inc. All rights reserved.
 //
 public extension Collection {
+    /// 配列の範囲外を参照した場合はnilを返す
     subscript(safe index: Index) -> Element? {
         return indices.contains(index) ? self[index] : nil
     }
