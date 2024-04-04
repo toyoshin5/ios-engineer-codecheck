@@ -40,7 +40,7 @@ class MainViewController: UITableViewController, UISearchBarDelegate {
         guard let keyword = searchKeyword else {
             return
         }
-        if keyword.isEmpty {
+        if !keyword.isEmpty {
             let apiUrl: String = "https://api.github.com/search/repositories?q=\(keyword)"
             if let url = URL(string: apiUrl) {
                 task = URLSession.shared.dataTask(with: url) { (data, _, _) in
