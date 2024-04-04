@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  iOSEngineerCodeCheck
 //
 //  Created by 史 翔新 on 2020/04/20.
@@ -52,7 +52,7 @@ class MainViewController: UITableViewController, UISearchBarDelegate {
                     }
                 }
             }
-        // これ呼ばなきゃリストが更新されません
+        // これ呼ばなきゃAPIが叩かれない
         task?.resume()
         }
         
@@ -83,7 +83,7 @@ class MainViewController: UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // 画面遷移時に呼ばれる
+        // セルをタップしたときに呼ばれる
         selectedIndex = indexPath.row
         performSegue(withIdentifier: "Detail", sender: self)
         
