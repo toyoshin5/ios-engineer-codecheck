@@ -21,12 +21,14 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var forksLabel: UILabel!
     @IBOutlet weak var issuesLabel: UILabel!
     
-    var vc1: MainViewController!
+    var vc1: MainViewController?
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let repo = vc1.githubRepos[vc1.selectedIndex]
+        guard let vc1 = vc1, let selectedIndex = vc1.selectedIndex, let repo = vc1.githubRepos[safe: selectedIndex] else {
+            return
+        }
         
         languageLabel.text = "Written in \(repo["language"] as? String ?? "")"
         starsLbl.text = "\(repo["stargazers_count"] as? Int ?? 0) stars"
@@ -39,18 +41,23 @@ class DetailViewController: UIViewController {
     
     func fetchAndDisplayRepoImage() {
         
-        let repo = vc1.githubRepos[vc1.selectedIndex]
+        guard let vc1 = vc1, let selectedIndex = vc1.selectedIndex, let repo = vc1.githubRepos[safe: selectedIndex] else {
+            return
+        }
         
         titleLabel.text = repo["full_name"] as? String
         
         if let owner = repo["owner"] as? [String: Any] {
             if let imgURL = owner["avatar_url"] as? String {
-                URLSession.shared.dataTask(with: URL(string: imgURL)!) { (data, res, err) in
-                    let img = UIImage(data: data!)!
-                    DispatchQueue.main.async {
-                        self.imgView.image = img
-                    }
-                }.resume()
+                if let url = URL(string: imgURL) {
+                    URLSession.shared.dataTask(with: url) { (data, _, _) in
+                           if let data = data, let image = UIImage(data: data) {
+                               DispatchQueue.main.async {
+                                   self.imgView.image = image
+                               }
+                           }
+                    }.resume()
+                }
             }
         }
         

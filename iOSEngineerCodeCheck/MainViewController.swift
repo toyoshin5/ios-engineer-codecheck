@@ -15,9 +15,8 @@ class MainViewController: UITableViewController, UISearchBarDelegate {
     var githubRepos: [[String: Any]] = []
     
     var task: URLSessionTask?
-    var searchKeyword: String!
-    var apiUrl: String!
-    var selectedIndex: Int!
+    var searchKeyword: String?
+    var selectedIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,20 +36,33 @@ class MainViewController: UITableViewController, UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-        searchKeyword = searchBar.text!
-        
-        if !searchKeyword.isEmpty {
-            apiUrl = "https://api.github.com/search/repositories?q=\(searchKeyword!)"
-            task = URLSession.shared.dataTask(with: URL(string: apiUrl)!) { (data, res, err) in
-                if let obj = try! JSONSerialization.jsonObject(with: data!) as? [String: Any] {
-                    if let items = obj["items"] as? [[String: Any]] {
-                    self.githubRepos = items
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
+        searchKeyword = searchBar.text
+        guard let keyword = searchKeyword else {
+            return
+        }
+        if keyword.isEmpty {
+            let apiUrl: String = "https://api.github.com/search/repositories?q=\(keyword)"
+            if let url = URL(string: apiUrl) {
+                task = URLSession.shared.dataTask(with: url) { (data, _, _) in
+                    if let data = data {
+                        do {
+                            if let obj = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                                if let items = obj["items"] as? [[String: Any]] {
+                                    self.githubRepos = items
+                                    DispatchQueue.main.async {
+                                        self.tableView.reloadData()
+                                    }
+                                }
+                            }
+                        } catch {
+                            print("JSON serialization failed: \(error)")
                         }
+                    } else {
+                        print("Data is nil")
                     }
                 }
+            } else {
+                print("URL is nil")
             }
         // これ呼ばなきゃAPIが叩かれない
         task?.resume()
@@ -61,8 +73,11 @@ class MainViewController: UITableViewController, UISearchBarDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "Detail"{
-            let dtl = segue.destination as! DetailViewController
-            dtl.vc1 = self
+            if let dtl = segue.destination as? DetailViewController{
+                dtl.vc1 = self
+            }else{
+                print("segue.destination is nil")
+            }
         }
         
     }
