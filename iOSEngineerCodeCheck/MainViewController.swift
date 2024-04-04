@@ -43,7 +43,10 @@ class MainViewController: UITableViewController, UISearchBarDelegate {
         if !keyword.isEmpty {
             let apiUrl: String = "https://api.github.com/search/repositories?q=\(keyword)"
             if let url = URL(string: apiUrl) {
-                task = URLSession.shared.dataTask(with: url) { (data, _, _) in
+                task = URLSession.shared.dataTask(with: url) {[weak self] (data, _, _) in
+                    guard let self = self else {
+                        return
+                    }
                     if let data = data {
                         do {
                             if let obj = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
@@ -72,9 +75,9 @@ class MainViewController: UITableViewController, UISearchBarDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "Detail"{
-            if let dtl = segue.destination as? DetailViewController {
-                dtl.vc1 = self
+        if segue.identifier == "Detail" {
+            if let detail = segue.destination as? DetailViewController {
+                detail.vc1 = self
             } else {
                 print("segue.destination is nil")
             }
