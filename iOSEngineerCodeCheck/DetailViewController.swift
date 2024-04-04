@@ -37,7 +37,7 @@ class DetailViewController: UIViewController {
         
     }
     
-    func fetchAndDisplayRepoImage(){
+    func fetchAndDisplayRepoImage() {
         
         let repo = vc1.githubRepos[vc1.selectedIndex]
         

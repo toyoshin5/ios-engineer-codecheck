@@ -12,7 +12,7 @@ class MainViewController: UITableViewController, UISearchBarDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var githubRepos: [[String: Any]]=[]
+    var githubRepos: [[String: Any]] = []
     
     var task: URLSessionTask?
     var searchKeyword: String!
