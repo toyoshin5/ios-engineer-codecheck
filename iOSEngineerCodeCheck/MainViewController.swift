@@ -40,7 +40,7 @@ class MainViewController: UITableViewController, UISearchBarDelegate {
         
         searchKeyword = searchBar.text!
         
-        if searchKeyword.count != 0 {
+        if !searchKeyword.isEmpty {
             apiUrl = "https://api.github.com/search/repositories?q=\(searchKeyword!)"
             task = URLSession.shared.dataTask(with: URL(string: apiUrl)!) { (data, res, err) in
                 if let obj = try! JSONSerialization.jsonObject(with: data!) as? [String: Any] {
