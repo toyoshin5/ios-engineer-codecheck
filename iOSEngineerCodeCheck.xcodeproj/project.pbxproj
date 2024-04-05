@@ -135,11 +135,10 @@
 				F0B454AC2BBEAAE700405276 /* API */,
 				F0B454B32BBFA88800405276 /* Constant */,
 				F0B454A92BBE4EF200405276 /* Extension */,
+				F0B454B82BBFF06E00405276 /* Search */,
+				F0B454B92BBFF07F00405276 /* Detail */,
 				BFD945DE244DC5E80012785A /* AppDelegate.swift */,
 				BFD945E0244DC5E80012785A /* SceneDelegate.swift */,
-				BFD945E2244DC5E80012785A /* MainViewController.swift */,
-				F0B454B62BBFB0CD00405276 /* GitHubReposDataSource.swift */,
-				BF0A658C244F2A3B00280FA6 /* DetailViewController.swift */,
 				BFD945E4244DC5E80012785A /* Main.storyboard */,
 				BFD945E7244DC5EB0012785A /* Assets.xcassets */,
 				BFD945E9244DC5EB0012785A /* LaunchScreen.storyboard */,
@@ -191,6 +190,23 @@
 				F0B454B42BBFA8A300405276 /* Constant.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		F0B454B82BBFF06E00405276 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				BFD945E2244DC5E80012785A /* MainViewController.swift */,
+				F0B454B62BBFB0CD00405276 /* GitHubReposDataSource.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		F0B454B92BBFF07F00405276 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				BF0A658C244F2A3B00280FA6 /* DetailViewController.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
