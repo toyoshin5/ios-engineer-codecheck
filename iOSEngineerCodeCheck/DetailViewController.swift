@@ -35,7 +35,7 @@ class DetailViewController: UIViewController {
         guard let name = name else {
             return
         }
-        let apiClient: APIClient = APIClient(baseURL: URL(string: "https://api.github.com")!)
+        let apiClient: APIClient = APIClient(baseURL: URL(string: Constant.githubAPIURL)!)
         let request: RepoDetailRequest = RepoDetailRequest(repositoryName: name)
         apiClient.send(request) { result in
             switch result {

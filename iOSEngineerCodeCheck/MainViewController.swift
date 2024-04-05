@@ -38,7 +38,7 @@ class MainViewController: UITableViewController, UISearchBarDelegate {
             return
         }
         if !keyword.isEmpty {
-            let apiClient: APIClient = APIClient(baseURL: URL(string: "https://api.github.com")!)
+            let apiClient: APIClient = APIClient(baseURL: URL(string: Constant.githubAPIURL)!)
             let request: SearchReposRequest = SearchReposRequest(keyword: keyword)
             apiClient.send(request) { result in
                 switch result {
