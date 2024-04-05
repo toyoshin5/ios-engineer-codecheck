@@ -33,6 +33,11 @@ struct SearchReposResponse: Decodable {
     private enum CodingKeys: String, CodingKey {
         case items
     }
+    
+    init(from decoder: Decoder) throws {
+        let container: KeyedDecodingContainer = try decoder.container(keyedBy: CodingKeys.self)
+        items = try container.decodeIfPresent([RepoItem].self, forKey: .items) ?? []
+    }
 
 }
 
@@ -41,5 +46,10 @@ struct RepoItem: Decodable {
     
     private enum CodingKeys: String, CodingKey {
         case fullName = "full_name"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container: KeyedDecodingContainer = try decoder.container(keyedBy: CodingKeys.self)
+        fullName = try container.decodeIfPresent(String.self, forKey: .fullName) ?? ""
     }
 }
