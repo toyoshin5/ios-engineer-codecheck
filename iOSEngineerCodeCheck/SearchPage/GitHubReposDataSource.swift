@@ -1,13 +1,13 @@
 import UIKit
 
 class GitHubReposDataSource: NSObject, UITableViewDataSource {
-    private var repos: [RepoItem] = []
+    private var repos: [Repository] = []
 
-    func update(with repos: [RepoItem]) {
+    func update(with repos: [Repository]) {
         self.repos = repos
     }
 
-    func repo(at index: Int) -> RepoItem? {
+    func repo(at index: Int) -> Repository? {
         guard index >= 0 && index < repos.count else {
             return nil
         }
@@ -21,8 +21,12 @@ class GitHubReposDataSource: NSObject, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = UITableViewCell()
-        let repo: RepoItem = repos[indexPath.row]
+        let repo: Repository = repos[indexPath.row]
         cell.textLabel?.text = repo.fullName
         return cell
     }
+}
+
+struct Repository {
+    let fullName: String
 }
