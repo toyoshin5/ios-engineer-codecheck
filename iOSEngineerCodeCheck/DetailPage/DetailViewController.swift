@@ -58,18 +58,15 @@ class DetailViewController: UIViewController {
     }
     
     func fetchAndDisplayRepoImage(of imgURL: String) {
-    
-        if let url = URL(string: imgURL) {
-            URLSession.shared.dataTask(with: url) { [weak self] (data, _, _) in
-                guard let self = self else {
-                    return
+        ImageFetcher.shared.fetch(from: imgURL) {[weak self] image in
+            guard let self = self else {
+                return
+            }
+            if let image = image {
+                DispatchQueue.main.async {
+                    self.imgView.image = image
                 }
-                if let data = data, let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self.imgView.image = image
-                    }
-                }
-            }.resume()
+            }
         }
         
     }
