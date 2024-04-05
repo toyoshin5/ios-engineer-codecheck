@@ -17,6 +17,9 @@ class APIClient {
     }
     
     private func addQueryParameters(to url: URL, parameters: [String: Any]) -> URL? {
+        guard !parameters.isEmpty else {
+            return url
+        }
         var components: URLComponents? = URLComponents(url: url, resolvingAgainstBaseURL: true)
         var queryItems: [URLQueryItem] = []
         for (key, value) in parameters {
@@ -28,12 +31,12 @@ class APIClient {
     }
 
     func send<T: APIRequest>(_ request: T, completion: @escaping (Result<T.Response, Error>) -> Void) {
-        
         let url: URL = baseURL.appendingPathComponent(request.path)
         guard let url: URL = addQueryParameters(to: url, parameters: request.parameters ?? [:]) else {
             completion(.failure(NSError(domain: "Invalid URL", code: -1, userInfo: nil)))
             return
         }
+        print("API Request: \(url)")
         var urlRequest: URLRequest = URLRequest(url: url)
         urlRequest.httpMethod = request.method
         urlRequest.allHTTPHeaderFields = request.headers
