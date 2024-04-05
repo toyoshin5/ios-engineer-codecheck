@@ -44,13 +44,15 @@ struct RepoDetailResponse: Decodable {
             case owner
         }
     
-    init() {
-        language = ""
-        stargazersCount = 0
-        subscribersCount = 0
-        forksCount = 0
-        openIssuesCount = 0
-        owner = Owner()
+    init(from decoder: Decoder) throws {
+        let container: KeyedDecodingContainer = try decoder.container(keyedBy: CodingKeys.self)
+        language = try container.decodeIfPresent(String.self, forKey: .language) ?? ""
+        stargazersCount = try container.decodeIfPresent(Int.self, forKey: .stargazersCount) ?? 0
+        subscribersCount = try container.decodeIfPresent(Int.self, forKey: .subscribersCount) ?? 0
+        forksCount = try container.decodeIfPresent(Int.self, forKey: .forksCount) ?? 0
+        openIssuesCount = try container.decodeIfPresent(Int.self, forKey: .openIssuesCount) ?? 0
+        owner = try container.decodeIfPresent(Owner.self, forKey: .owner) ?? Owner(from: decoder)
+    
     }
     
 }
@@ -62,8 +64,9 @@ struct Owner: Decodable {
         case avatarUrl = "avatar_url"
     }
     
-    init() {
-        avatarUrl = ""
+    init(from decoder: Decoder) throws {
+        let container: KeyedDecodingContainer = try decoder.container(keyedBy: CodingKeys.self)
+        avatarUrl = try container.decodeIfPresent(String.self, forKey: .avatarUrl) ?? ""
     }
     
 }

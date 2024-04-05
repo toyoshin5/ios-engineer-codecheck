@@ -21,17 +21,13 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var forksLabel: UILabel!
     @IBOutlet weak var issuesLabel: UILabel!
     
-    var vc1: MainViewController?
+    var fullName: String?
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let vc1 = vc1, let selectedIndex = vc1.selectedIndex, let repo = vc1.githubRepos[safe: selectedIndex] else {
-            return
-        }
-        
-        titleLabel.text = repo["full_name"] as? String
-        fetchDetailFromName(of: repo["full_name"] as? String)
+        titleLabel.text = fullName
+        fetchDetailFromName(of: fullName)
         
     }
     
@@ -39,9 +35,12 @@ class DetailViewController: UIViewController {
         guard let name = name else {
             return
         }
-        let apiClient: APIClient = APIClient(baseURL: URL(string: "https://api.github.com")!)
+        let apiClient: APIClient = APIClient(baseURL: URL(string: Constant.githubAPIURL)!)
         let request: RepoDetailRequest = RepoDetailRequest(repositoryName: name)
-        apiClient.send(request) { result in
+        apiClient.send(request) {[weak self] result in
+            guard let self = self else {
+                return
+            }
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
