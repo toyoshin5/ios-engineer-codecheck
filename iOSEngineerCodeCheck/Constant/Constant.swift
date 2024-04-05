@@ -8,5 +8,5 @@
 
 // 定数を管理するクラス
 class Constant {
-    static let githubAPIURL = "https://api.github.com"
+    static let githubAPIURL: String = "https://api.github.com"
 }
