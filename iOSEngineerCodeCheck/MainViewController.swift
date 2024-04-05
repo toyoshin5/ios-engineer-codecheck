@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UITableViewController, UISearchBarDelegate {
+class MainViewController: UITableViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -23,40 +23,7 @@ class MainViewController: UITableViewController, UISearchBarDelegate {
         searchBar.placeholder = "GitHubのリポジトリを検索できるよー"
         searchBar.delegate = self
     }
-    
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        return true
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        task?.cancel()
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchKeyword = searchBar.text
-        guard let keyword = searchKeyword else {
-            return
-        }
-        if !keyword.isEmpty {
-            let apiClient: APIClient = APIClient(baseURL: URL(string: Constant.githubAPIURL)!)
-            let request: SearchReposRequest = SearchReposRequest(keyword: keyword)
-            apiClient.send(request) { result in
-                switch result {
-                case .success(let response):
-                    DispatchQueue.main.async {
-                        self.githubRepos = response
-                        self.tableView.reloadData()
-                    }
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        // これ呼ばなきゃAPIが叩かれない
-        task?.resume()
-        }
-        
-    }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "Detail" {
@@ -93,3 +60,40 @@ class MainViewController: UITableViewController, UISearchBarDelegate {
     }
     
 }
+
+extension MainViewController: UISearchBarDelegate {
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        return true
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        task?.cancel()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchKeyword = searchBar.text
+        guard let keyword = searchKeyword else {
+            return
+        }
+        if !keyword.isEmpty {
+            let apiClient: APIClient = APIClient(baseURL: URL(string: Constant.githubAPIURL)!)
+            let request: SearchReposRequest = SearchReposRequest(keyword: keyword)
+            apiClient.send(request) { result in
+                switch result {
+                case .success(let response):
+                    DispatchQueue.main.async {
+                        self.githubRepos = response
+                        self.tableView.reloadData()
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        // これ呼ばなきゃAPIが叩かれない
+        task?.resume()
+        }
+    }
+
+}
+
