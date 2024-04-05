@@ -12,52 +12,31 @@ class MainViewController: UITableViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var githubRepos: SearchReposResponse = SearchReposResponse(items: [])
-    var searchKeyword: String?
-    var selectedIndex: Int?
-    
+    private var dataSource: GitHubReposDataSource = GitHubReposDataSource()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         searchBar.placeholder = "GitHubのリポジトリを検索できるよー"
         searchBar.delegate = self
+        tableView.dataSource = dataSource
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "Detail" {
-            if let detail = segue.destination as? DetailViewController {
-                if let selectedIndex = selectedIndex {
-                    detail.fullName = githubRepos.items[safe: selectedIndex]?.fullName ?? ""
-                }
-            } else {
-                print("segue.destination is nil")
+            if let detail = segue.destination as? DetailViewController,
+               // RepoItemはsenderから受け取るほうが安全
+               let repo = sender as? RepoItem {
+                detail.fullName = repo.fullName
             }
         }
-        
     }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return githubRepos.items.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell: UITableViewCell = UITableViewCell()
-        if let repo: RepoItem = githubRepos.items[safe: indexPath.row] {
-            cell.textLabel?.text = repo.fullName
-        }
-        return cell
-        
-    }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // セルをタップしたときに呼ばれる
-        selectedIndex = indexPath.row
-        performSegue(withIdentifier: "Detail", sender: self)
-        
+        if let repo = dataSource.repo(at: indexPath.row) {
+            performSegue(withIdentifier: "Detail", sender: repo)
+        }
     }
-    
 }
 
 extension MainViewController: UISearchBarDelegate {
@@ -67,8 +46,7 @@ extension MainViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchKeyword = searchBar.text
-        guard let keyword = searchKeyword else {
+        guard let keyword = searchBar.text, !keyword.isEmpty else {
             return
         }
         if !keyword.isEmpty {
@@ -81,7 +59,7 @@ extension MainViewController: UISearchBarDelegate {
                 switch result {
                 case .success(let response):
                     DispatchQueue.main.async {
-                        self.githubRepos = response
+                        self.dataSource.update(with: response.items)
                         self.tableView.reloadData()
                     }
                 case .failure(let error):
@@ -92,4 +70,3 @@ extension MainViewController: UISearchBarDelegate {
     }
 
 }
-

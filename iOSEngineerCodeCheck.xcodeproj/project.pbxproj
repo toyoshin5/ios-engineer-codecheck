@@ -23,6 +23,7 @@
 		F0B454B02BBEC35A00405276 /* RepoDetailAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454AF2BBEC35A00405276 /* RepoDetailAPI.swift */; };
 		F0B454B22BBEDA2D00405276 /* SearchRepoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454B12BBEDA2D00405276 /* SearchRepoAPI.swift */; };
 		F0B454B52BBFA8A300405276 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454B42BBFA8A300405276 /* Constant.swift */; };
+		F0B454B72BBFB0CD00405276 /* GitHubReposDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454B62BBFB0CD00405276 /* GitHubReposDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -79,6 +80,7 @@
 		F0B454AF2BBEC35A00405276 /* RepoDetailAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailAPI.swift; sourceTree = "<group>"; };
 		F0B454B12BBEDA2D00405276 /* SearchRepoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepoAPI.swift; sourceTree = "<group>"; };
 		F0B454B42BBFA8A300405276 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		F0B454B62BBFB0CD00405276 /* GitHubReposDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubReposDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				BFD945DE244DC5E80012785A /* AppDelegate.swift */,
 				BFD945E0244DC5E80012785A /* SceneDelegate.swift */,
 				BFD945E2244DC5E80012785A /* MainViewController.swift */,
+				F0B454B62BBFB0CD00405276 /* GitHubReposDataSource.swift */,
 				BF0A658C244F2A3B00280FA6 /* DetailViewController.swift */,
 				BFD945E4244DC5E80012785A /* Main.storyboard */,
 				BFD945E7244DC5EB0012785A /* Assets.xcassets */,
@@ -357,6 +360,7 @@
 				F0B454B52BBFA8A300405276 /* Constant.swift in Sources */,
 				F0B454A82BBE4EE600405276 /* Collection+Extension.swift in Sources */,
 				F0B454AB2BBEAADF00405276 /* APIClient.swift in Sources */,
+				F0B454B72BBFB0CD00405276 /* GitHubReposDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
