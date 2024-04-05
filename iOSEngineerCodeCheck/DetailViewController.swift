@@ -37,7 +37,10 @@ class DetailViewController: UIViewController {
         }
         let apiClient: APIClient = APIClient(baseURL: URL(string: Constant.githubAPIURL)!)
         let request: RepoDetailRequest = RepoDetailRequest(repositoryName: name)
-        apiClient.send(request) { result in
+        apiClient.send(request) {[weak self] result in
+            guard let self = self else {
+                return
+            }
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {

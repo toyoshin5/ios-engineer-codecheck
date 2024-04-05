@@ -13,7 +13,6 @@ class MainViewController: UITableViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     var githubRepos: SearchReposResponse = SearchReposResponse(items: [])
-    var task: URLSessionTask?
     var searchKeyword: String?
     var selectedIndex: Int?
     
@@ -67,10 +66,6 @@ extension MainViewController: UISearchBarDelegate {
         return true
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        task?.cancel()
-    }
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchKeyword = searchBar.text
         guard let keyword = searchKeyword else {
@@ -79,7 +74,10 @@ extension MainViewController: UISearchBarDelegate {
         if !keyword.isEmpty {
             let apiClient: APIClient = APIClient(baseURL: URL(string: Constant.githubAPIURL)!)
             let request: SearchReposRequest = SearchReposRequest(keyword: keyword)
-            apiClient.send(request) { result in
+            apiClient.send(request) {[weak self] result in
+                guard let self = self else {
+                    return
+                }
                 switch result {
                 case .success(let response):
                     DispatchQueue.main.async {
@@ -90,8 +88,6 @@ extension MainViewController: UISearchBarDelegate {
                     print(error)
                 }
             }
-        // これ呼ばなきゃAPIが叩かれない
-        task?.resume()
         }
     }
 
