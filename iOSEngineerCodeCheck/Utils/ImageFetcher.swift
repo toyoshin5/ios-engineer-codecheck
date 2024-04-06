@@ -9,7 +9,7 @@
 import UIKit
 
 class ImageFetcher {
-    static let shared = ImageFetcher() // シングルトン
+    static let shared: ImageFetcher = ImageFetcher() // シングルトン
     
     private init() {}
     
