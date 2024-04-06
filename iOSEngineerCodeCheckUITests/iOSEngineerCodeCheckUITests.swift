@@ -27,17 +27,16 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-
+        app.tables["Empty list"].searchFields["GitHubのリポジトリを検索できるよー"].tap()
+        app.tables["Empty list"].searchFields["GitHubのリポジトリを検索できるよー"].typeText("swift\n")
+        app.tables/*@START_MENU_TOKEN@*/.staticTexts["apple/swift"]/*[[".cells.staticTexts[\"apple\/swift\"]",".staticTexts[\"apple\/swift\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        //文字が表示されるか
+        XCTAssert(app.staticTexts["apple/swift"].exists)
+        app.navigationBars["iOSEngineerCodeCheck.DetailView"].buttons["Root View Controller"].tap()
+        app.tables.staticTexts["realm/SwiftLint"].tap()
+        //文字が表示されるか
+        XCTAssert(app.staticTexts["realm/SwiftLint"].exists)
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
     }
 }
