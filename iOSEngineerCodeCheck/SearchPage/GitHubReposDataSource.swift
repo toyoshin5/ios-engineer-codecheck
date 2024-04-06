@@ -26,7 +26,3 @@ class GitHubReposDataSource: NSObject, UITableViewDataSource {
         return cell
     }
 }
-
-struct Repository {
-    let fullName: String
-}
