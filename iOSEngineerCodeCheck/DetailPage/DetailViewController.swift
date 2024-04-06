@@ -2,73 +2,48 @@
 //  DetailViewController.swift
 //  iOSEngineerCodeCheck
 //
-//  Created by 史 翔新 on 2020/04/21.
-//  Copyright © 2020 YUMEMI Inc. All rights reserved.
+//  Created by Shingo Toyoda on 2024/04/06.
+//  Copyright © 2024 YUMEMI Inc. All rights reserved.
 //
 
 import UIKit
+import Combine
 
 class DetailViewController: UIViewController {
-    
     @IBOutlet weak var imgView: UIImageView!
-    
     @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var languageLabel: UILabel!
-    
-    @IBOutlet weak var starsLbl: UILabel!
+    @IBOutlet weak var starsLabel: UILabel!
     @IBOutlet weak var watchersLabel: UILabel!
     @IBOutlet weak var forksLabel: UILabel!
     @IBOutlet weak var issuesLabel: UILabel!
     
-    var fullName: String?
-        
+    var viewModel: DetailViewModel = DetailViewModel()
+    var cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        titleLabel.text = fullName
-        fetchDetailFromName(of: fullName)
-        
-    }
-    
-    func fetchDetailFromName(of name: String?) {
-        guard let name = name else {
-            return
-        }
-        let apiClient: APIClient = APIClient(baseURL: URL(string: Constant.githubAPIURL)!)
-        let request: RepoDetailRequest = RepoDetailRequest(repositoryName: name)
-        apiClient.send(request) {[weak self] result in
-            guard let self = self else {
-                return
-            }
-            switch result {
-            case .success(let response):
-                DispatchQueue.main.async {
-                    self.languageLabel.text = "Written in \(response.language)"
-                    self.starsLbl.text = "\(response.stargazersCount) stars"
-                    self.watchersLabel.text = "\(response.subscribersCount) watchers"
-                    self.forksLabel.text = "\(response.forksCount) forks"
-                    self.issuesLabel.text = "\(response.openIssuesCount) open issues"
+        self.titleLabel.text = viewModel.fullName
+        viewModel.$repository
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] repository in
+                guard let self = self, let repository = repository else {
+                    return
                 }
-                self.fetchAndDisplayRepoImage(of: response.owner.avatarUrl)
-            case .failure(let error):
-                print("APIError: \(error)")
-            }
-        }
-    }
-    
-    func fetchAndDisplayRepoImage(of imgURL: String) {
-        ImageFetcher.shared.fetch(from: imgURL) {[weak self] image in
-            guard let self = self else {
-                return
-            }
-            if let image = image {
-                DispatchQueue.main.async {
-                    self.imgView.image = image
-                }
-            }
-        }
+                self.languageLabel.text = "Written in \(repository.language)"
+                self.starsLabel.text = "\(repository.stars) stars"
+                self.watchersLabel.text = "\(repository.watchers) watchers"
+                self.forksLabel.text = "\(repository.forks) forks"
+                self.issuesLabel.text = "\(repository.issues) open issues"
+            })
+            .store(in: &cancellables)
+        viewModel.$image
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] image in
+                self?.imgView.image = image
+            })
+            .store(in: &cancellables)
         
+        viewModel.fetchDetail()
     }
-    
 }

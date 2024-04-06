@@ -88,7 +88,7 @@
                         <outlet property="imgView" destination="11t-PC-W9T" id="B8n-A0-5ro"/>
                         <outlet property="issuesLabel" destination="Rgn-8O-Xqc" id="bjD-rF-CEG"/>
                         <outlet property="languageLabel" destination="SPM-UT-3Oh" id="HVT-dC-2MC"/>
-                        <outlet property="starsLbl" destination="969-3q-xgP" id="ps6-E6-xTc"/>
+                        <outlet property="starsLabel" destination="969-3q-xgP" id="ps6-E6-xTc"/>
                         <outlet property="titleLabel" destination="ixe-3O-Fya" id="a5s-hq-tqk"/>
                         <outlet property="watchersLabel" destination="3YQ-vP-zT5" id="weD-07-q9T"/>
                     </connections>
