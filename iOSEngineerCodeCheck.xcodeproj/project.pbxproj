@@ -25,6 +25,7 @@
 		F0B454B52BBFA8A300405276 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454B42BBFA8A300405276 /* Constant.swift */; };
 		F0B454B72BBFB0CD00405276 /* GitHubReposDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454B62BBFB0CD00405276 /* GitHubReposDataSource.swift */; };
 		F0B454BC2BC0546200405276 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454BB2BC0546200405276 /* ImageFetcher.swift */; };
+		F0B454BE2BC0D73100405276 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0B454BD2BC0D73100405276 /* Detail.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -83,6 +84,7 @@
 		F0B454B42BBFA8A300405276 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		F0B454B62BBFB0CD00405276 /* GitHubReposDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubReposDataSource.swift; sourceTree = "<group>"; };
 		F0B454BB2BC0546200405276 /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
+		F0B454BD2BC0D73100405276 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,10 +141,9 @@
 				F0B454A92BBE4EF200405276 /* Extension */,
 				F0B454B82BBFF06E00405276 /* SearchPage */,
 				F0B454B92BBFF07F00405276 /* DetailPage */,
+				F0B454BA2BC0543B00405276 /* Utils */,
 				BFD945DE244DC5E80012785A /* AppDelegate.swift */,
 				BFD945E0244DC5E80012785A /* SceneDelegate.swift */,
-				F0B454BA2BC0543B00405276 /* Utils */,
-				BFD945E4244DC5E80012785A /* Main.storyboard */,
 				BFD945E7244DC5EB0012785A /* Assets.xcassets */,
 				BFD945E9244DC5EB0012785A /* LaunchScreen.storyboard */,
 				BFD945EC244DC5EB0012785A /* Info.plist */,
@@ -198,6 +199,7 @@
 		F0B454B82BBFF06E00405276 /* SearchPage */ = {
 			isa = PBXGroup;
 			children = (
+				BFD945E4244DC5E80012785A /* Main.storyboard */,
 				BFD945E2244DC5E80012785A /* MainViewController.swift */,
 				F0B454B62BBFB0CD00405276 /* GitHubReposDataSource.swift */,
 			);
@@ -207,6 +209,7 @@
 		F0B454B92BBFF07F00405276 /* DetailPage */ = {
 			isa = PBXGroup;
 			children = (
+				F0B454BD2BC0D73100405276 /* Detail.storyboard */,
 				BF0A658C244F2A3B00280FA6 /* DetailViewController.swift */,
 			);
 			path = DetailPage;
@@ -330,6 +333,7 @@
 				F0B454A62BBE349900405276 /* .swiftlint.yml in Resources */,
 				BFD945EB244DC5EB0012785A /* LaunchScreen.storyboard in Resources */,
 				BFD945E8244DC5EB0012785A /* Assets.xcassets in Resources */,
+				F0B454BE2BC0D73100405276 /* Detail.storyboard in Resources */,
 				BFD945E6244DC5E80012785A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
