@@ -18,17 +18,36 @@ class iOSEngineerCodeCheckTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testSearchRepoStub() {
+        let apiClient = StubAPIClient(baseURL: URL(string: Constant.githubAPIURL)!)
+        let request = SearchReposRequest(keyword: "")
+        apiClient.send(request) { result in
+            switch result {
+            case .success(let response):
+                XCTAssertEqual(response.items.count, 1)
+                XCTAssertEqual(response.items.first?.fullName, "apple/swift")
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
         }
     }
-
+    
+    func testRepoDetailStub() {
+        let apiClient = StubAPIClient(baseURL: URL(string: Constant.githubAPIURL)!)
+        let request = RepoDetailRequest(repositoryName: "")
+        apiClient.send(request) { result in
+            switch result {
+            case .success(let response):
+                XCTAssertEqual(response.stargazersCount, 65750)
+                XCTAssertEqual(response.subscribersCount, 2489)
+                XCTAssertEqual(response.forksCount, 10184)
+                XCTAssertEqual(response.language, "C++")
+                XCTAssertEqual(response.openIssuesCount, 7227)
+                XCTAssertEqual(response.owner.avatarUrl, "https://avatars.githubusercontent.com/u/10639145?v=4")
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+    }
 }

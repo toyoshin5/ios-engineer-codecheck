@@ -30,6 +30,9 @@
 		F0B454C22BC0F4AE00405276 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454C12BC0F4AE00405276 /* DetailModel.swift */; };
 		F0B454C42BC15F0E00405276 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454C32BC15F0E00405276 /* MainViewModel.swift */; };
 		F0B454C62BC15F1700405276 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454C52BC15F1700405276 /* MainModel.swift */; };
+		F0B454C82BC18A8000405276 /* StubAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454C72BC18A8000405276 /* StubAPIClient.swift */; };
+		F0B454CA2BC18B3800405276 /* SearchRepoResponseStub.json in Resources */ = {isa = PBXBuildFile; fileRef = F0B454C92BC18B3800405276 /* SearchRepoResponseStub.json */; };
+		F0B454CC2BC1900E00405276 /* RepoDetailResponseStub.json in Resources */ = {isa = PBXBuildFile; fileRef = F0B454CB2BC1900E00405276 /* RepoDetailResponseStub.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -93,6 +96,9 @@
 		F0B454C12BC0F4AE00405276 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 		F0B454C32BC15F0E00405276 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		F0B454C52BC15F1700405276 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
+		F0B454C72BC18A8000405276 /* StubAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAPIClient.swift; sourceTree = "<group>"; };
+		F0B454C92BC18B3800405276 /* SearchRepoResponseStub.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchRepoResponseStub.json; sourceTree = "<group>"; };
+		F0B454CB2BC1900E00405276 /* RepoDetailResponseStub.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RepoDetailResponseStub.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +169,9 @@
 			isa = PBXGroup;
 			children = (
 				BFD945F5244DC5EB0012785A /* iOSEngineerCodeCheckTests.swift */,
+				F0B454C72BC18A8000405276 /* StubAPIClient.swift */,
+				F0B454C92BC18B3800405276 /* SearchRepoResponseStub.json */,
+				F0B454CB2BC1900E00405276 /* RepoDetailResponseStub.json */,
 				BFD945F7244DC5EB0012785A /* Info.plist */,
 			);
 			path = iOSEngineerCodeCheckTests;
@@ -354,6 +363,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0B454CA2BC18B3800405276 /* SearchRepoResponseStub.json in Resources */,
+				F0B454CC2BC1900E00405276 /* RepoDetailResponseStub.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFD945F6244DC5EB0012785A /* iOSEngineerCodeCheckTests.swift in Sources */,
+				F0B454C82BC18A8000405276 /* StubAPIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
