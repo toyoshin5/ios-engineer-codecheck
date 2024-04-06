@@ -7,13 +7,6 @@ class GitHubReposDataSource: NSObject, UITableViewDataSource {
         self.repos = repos
     }
 
-    func repo(at index: Int) -> Repository? {
-        guard index >= 0 && index < repos.count else {
-            return nil
-        }
-        return repos[index]
-    }
-
     // MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return repos.count
