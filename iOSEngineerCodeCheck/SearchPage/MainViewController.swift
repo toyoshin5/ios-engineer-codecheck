@@ -16,7 +16,7 @@ class MainViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.placeholder = "GitHubのリポジトリを検索できるよー"
+        searchBar.placeholder = Constant.searchBarPlaceholder
         searchBar.delegate = self
         tableView.dataSource = dataSource
     }

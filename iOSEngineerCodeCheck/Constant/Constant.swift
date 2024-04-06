@@ -9,4 +9,5 @@
 // 定数を管理するクラス
 class Constant {
     static let githubAPIURL: String = "https://api.github.com"
+    static let searchBarPlaceholder: String = "GitHubのリポジトリを検索できるよー"
 }
