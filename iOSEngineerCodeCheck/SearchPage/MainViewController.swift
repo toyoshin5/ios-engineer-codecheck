@@ -22,7 +22,10 @@ class MainViewController: UITableViewController {
             }
             .store(in: &cancellables)
     }
+}
 
+// MARK: - UITableViewのデリゲートメソッド
+extension MainViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Detail",
            let detail = segue.destination as? DetailViewController,
@@ -30,7 +33,6 @@ class MainViewController: UITableViewController {
             detail.viewModel.fullName = repo.fullName
         }
     }
-
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let repo = viewModel.repos[safe: indexPath.row] {
             performSegue(withIdentifier: "Detail", sender: repo)
@@ -38,6 +40,7 @@ class MainViewController: UITableViewController {
     }
 }
 
+// MARK: - UISearchBarのデリゲートメソッド
 extension MainViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let keyword = searchBar.text, !keyword.isEmpty else {
