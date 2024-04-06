@@ -26,7 +26,7 @@ class MainViewController: UITableViewController {
             if let detail = segue.destination as? DetailViewController,
                // RepoItemはsenderから受け取るほうが安全
                let repo = sender as? Repository {
-                detail.fullName = repo.fullName
+                detail.viewModel.fullName = repo.fullName
             }
         }
     }

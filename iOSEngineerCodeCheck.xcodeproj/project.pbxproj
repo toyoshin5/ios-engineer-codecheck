@@ -26,6 +26,8 @@
 		F0B454B72BBFB0CD00405276 /* GitHubReposDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454B62BBFB0CD00405276 /* GitHubReposDataSource.swift */; };
 		F0B454BC2BC0546200405276 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454BB2BC0546200405276 /* ImageFetcher.swift */; };
 		F0B454BE2BC0D73100405276 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0B454BD2BC0D73100405276 /* Detail.storyboard */; };
+		F0B454C02BC0F4A100405276 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454BF2BC0F4A100405276 /* DetailViewModel.swift */; };
+		F0B454C22BC0F4AE00405276 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454C12BC0F4AE00405276 /* DetailModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -85,6 +87,8 @@
 		F0B454B62BBFB0CD00405276 /* GitHubReposDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubReposDataSource.swift; sourceTree = "<group>"; };
 		F0B454BB2BC0546200405276 /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
 		F0B454BD2BC0D73100405276 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
+		F0B454BF2BC0F4A100405276 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		F0B454C12BC0F4AE00405276 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +215,8 @@
 			children = (
 				F0B454BD2BC0D73100405276 /* Detail.storyboard */,
 				BF0A658C244F2A3B00280FA6 /* DetailViewController.swift */,
+				F0B454BF2BC0F4A100405276 /* DetailViewModel.swift */,
+				F0B454C12BC0F4AE00405276 /* DetailModel.swift */,
 			);
 			path = DetailPage;
 			sourceTree = "<group>";
@@ -383,6 +389,7 @@
 			files = (
 				BFD945E3244DC5E80012785A /* MainViewController.swift in Sources */,
 				F0B454B02BBEC35A00405276 /* RepoDetailAPI.swift in Sources */,
+				F0B454C22BC0F4AE00405276 /* DetailModel.swift in Sources */,
 				F0B454AE2BBEC32C00405276 /* APIRequest.swift in Sources */,
 				BF0A658D244F2A3B00280FA6 /* DetailViewController.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
@@ -390,6 +397,7 @@
 				BFD945E1244DC5E80012785A /* SceneDelegate.swift in Sources */,
 				F0B454B52BBFA8A300405276 /* Constant.swift in Sources */,
 				F0B454A82BBE4EE600405276 /* Collection+Extension.swift in Sources */,
+				F0B454C02BC0F4A100405276 /* DetailViewModel.swift in Sources */,
 				F0B454BC2BC0546200405276 /* ImageFetcher.swift in Sources */,
 				F0B454AB2BBEAADF00405276 /* APIClient.swift in Sources */,
 				F0B454B72BBFB0CD00405276 /* GitHubReposDataSource.swift in Sources */,
