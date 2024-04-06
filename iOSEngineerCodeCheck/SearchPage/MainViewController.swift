@@ -16,7 +16,7 @@ class MainViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.placeholder = "GitHubのリポジトリを検索できるよー"
+        searchBar.placeholder = Constant.searchBarPlaceholder
         searchBar.delegate = self
         tableView.dataSource = dataSource
     }
@@ -25,7 +25,7 @@ class MainViewController: UITableViewController {
         if segue.identifier == "Detail" {
             if let detail = segue.destination as? DetailViewController,
                // RepoItemはsenderから受け取るほうが安全
-               let repo = sender as? RepoItem {
+               let repo = sender as? Repository {
                 detail.fullName = repo.fullName
             }
         }
@@ -58,8 +58,9 @@ extension MainViewController: UISearchBarDelegate {
                 }
                 switch result {
                 case .success(let response):
+                    let repos: [Repository] = response.items.map { Repository(fullName: $0.fullName) }
                     DispatchQueue.main.async {
-                        self.dataSource.update(with: response.items)
+                        self.dataSource.update(with: repos)
                         self.tableView.reloadData()
                     }
                 case .failure(let error):
