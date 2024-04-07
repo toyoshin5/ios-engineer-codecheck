@@ -12,6 +12,7 @@ class MainViewController: UITableViewController {
         super.viewDidLoad()
         searchBar.placeholder = Constant.searchBarPlaceholder
         searchBar.delegate = self
+        searchBar.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
         tableView.dataSource = dataSource
 
         viewModel.$repos
