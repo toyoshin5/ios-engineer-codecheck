@@ -42,14 +42,20 @@ struct SearchReposResponse: Decodable {
 }
 
 struct RepoItem: Decodable {
+    let name: String
     let fullName: String
+    let owner: Owner
     
     private enum CodingKeys: String, CodingKey {
+        case name
         case fullName = "full_name"
+        case owner
     }
     
     init(from decoder: Decoder) throws {
         let container: KeyedDecodingContainer = try decoder.container(keyedBy: CodingKeys.self)
+        name = try container.decodeIfPresent(String.self, forKey: .name) ?? ""
         fullName = try container.decodeIfPresent(String.self, forKey: .fullName) ?? ""
+        owner = try container.decodeIfPresent(Owner.self, forKey: .owner) ?? Owner(from: decoder)
     }
 }

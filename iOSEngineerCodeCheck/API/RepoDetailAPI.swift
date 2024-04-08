@@ -59,14 +59,17 @@ struct RepoDetailResponse: Decodable {
 
 struct Owner: Decodable {
     let avatarUrl: String
+    let login: String
     
     private enum CodingKeys: String, CodingKey {
         case avatarUrl = "avatar_url"
+        case login
     }
     
     init(from decoder: Decoder) throws {
         let container: KeyedDecodingContainer = try decoder.container(keyedBy: CodingKeys.self)
         avatarUrl = try container.decodeIfPresent(String.self, forKey: .avatarUrl) ?? ""
+        login = try container.decodeIfPresent(String.self, forKey: .login) ?? ""
     }
     
 }
