@@ -26,7 +26,8 @@ class iOSEngineerCodeCheckTests: XCTestCase {
             switch result {
             case .success(let response):
                 XCTAssertEqual(response.items.count, 1)
-                XCTAssertEqual(response.items.first?.fullName, "apple/swift")
+                XCTAssertEqual(response.items.first?.name, "swift")
+                XCTAssertEqual(response.items.first?.owner.login, "apple")
             case .failure(let error):
                 XCTFail(error.localizedDescription)
             }
