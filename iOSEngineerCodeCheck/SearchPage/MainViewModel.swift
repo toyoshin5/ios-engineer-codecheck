@@ -15,9 +15,11 @@ class MainViewModel: ObservableObject {
             switch result {
             case .success(let response):
                 let repos: [Repository] = response.items.map {
-                    Repository(fullName: $0.fullName,
+                    Repository(
+                        fullName: $0.fullName,
                         title: $0.name,
-                               owner: $0.owner.login
+                        owner: $0.owner.login,
+                        description: $0.description
                     )
                 }
                 DispatchQueue.main.async {
