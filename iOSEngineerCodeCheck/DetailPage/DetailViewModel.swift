@@ -50,4 +50,17 @@ class DetailViewModel: ObservableObject {
             self?.image = image
         })
     }
+    
+    func getPreliminalTitle() -> String {
+        return self.fullName.split(separator: "/").last.map(String.init) ?? ""
+    }
+    
+    func openWithBrowser() {
+        guard let url = URL(string: repository?.htmlUrl ?? "") else {
+            return
+        }
+        UIApplication.shared.open(url)
+    }
+
+    
 }
