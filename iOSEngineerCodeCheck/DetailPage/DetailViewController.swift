@@ -30,7 +30,7 @@ class DetailViewController: UIViewController {
                 guard let self = self, let repository = repository else {
                     return
                 }
-                self.languageLabel.text = "Written in \(repository.language)"
+                self.languageLabel.text = (repository.language != nil) ? "Written in \(repository.language!)" : ""
                 self.starsLabel.text = "\(repository.stars) stars"
                 self.watchersLabel.text = "\(repository.watchers) watchers"
                 self.forksLabel.text = "\(repository.forks) forks"

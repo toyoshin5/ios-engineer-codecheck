@@ -27,11 +27,15 @@ class DetailViewModel: ObservableObject {
             switch result {
             case .success(let response):
                 self.repository = RepositoryDetail(
+                    title: response.name,
+                    owner: response.owner.login,
                     language: response.language,
+                    description: response.description,
                     stars: response.stargazersCount,
                     watchers: response.subscribersCount,
                     forks: response.forksCount,
-                    issues: response.openIssuesCount
+                    issues: response.openIssuesCount,
+                    htmlUrl: response.htmlUrl
                 )
                 self.fetchRepoImage(of: response.owner.avatarUrl)
             case .failure(let error):

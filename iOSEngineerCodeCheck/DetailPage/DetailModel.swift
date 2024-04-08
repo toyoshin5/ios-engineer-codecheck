@@ -7,9 +7,13 @@
 //
 
 struct RepositoryDetail {
-    var language: String
-    var stars: Int
-    var watchers: Int
-    var forks: Int
-    var issues: Int
+    let title: String
+    let owner: String
+    let language: String?
+    let description: String
+    let stars: Int
+    let watchers: Int
+    let forks: Int
+    let issues: Int
+    let htmlUrl: String
 }
