@@ -13,9 +13,11 @@ class GitHubReposDataSource: NSObject, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseIdentifier, for: indexPath) as? TableViewCell else {
+            return UITableViewCell()
+        }
         let repo: Repository = repos[indexPath.row]
-        cell.textLabel?.text = repo.fullName
+        cell.bind(title: repo.fullName)
         return cell
     }
 }

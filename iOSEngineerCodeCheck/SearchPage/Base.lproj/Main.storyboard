@@ -19,31 +19,15 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Repository" textLabel="V66-xN-aKy" detailTextLabel="E7E-kF-FF6" style="IBUITableViewCellStyleValue1" id="jZX-YR-etd">
-                                <rect key="frame" x="20" y="82" width="374" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="4Fh-IA-Abo" customClass="TableViewCell" customModule="iOSEngineerCodeCheck" customModuleProvider="target">
+                                <rect key="frame" x="20" y="82" width="374" height="44.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jZX-YR-etd" id="k29-jL-IM1">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Fh-IA-Abo" id="3ez-6i-Sm8">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="44.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V66-xN-aKy">
-                                            <rect key="frame" x="20" y="12" width="33" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E7E-kF-FF6">
-                                            <rect key="frame" x="310" y="12" width="44" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="ESH-FX-kjM" kind="show" identifier="Detail" id="tUz-Va-0RE"/>
+                                    <segue destination="FY9-DW-yDC" kind="show" identifier="Detail" id="glC-Gs-dEJ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -63,14 +47,14 @@
             <point key="canvasLocation" x="-498" y="137"/>
         </scene>
         <!--Detail-->
-        <scene sceneID="Hw9-TX-wwd">
+        <scene sceneID="Bcf-HL-LvE">
             <objects>
-                <viewControllerPlaceholder storyboardName="Detail" id="ESH-FX-kjM" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="wx2-Sk-yCE"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fMp-3C-Hdu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Detail" id="FY9-DW-yDC" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Vx9-Uj-b93"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0dM-kU-iEV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="207" y="137"/>
+            <point key="canvasLocation" x="131" y="137"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hWi-qa-NBR">
