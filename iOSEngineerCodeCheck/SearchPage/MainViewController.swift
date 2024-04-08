@@ -38,10 +38,6 @@ extension MainViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let repo = viewModel.repos[safe: indexPath.row] {
             performSegue(withIdentifier: "Detail", sender: repo)
