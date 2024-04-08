@@ -51,6 +51,7 @@ extension MainViewController: UISearchBarDelegate {
         guard let keyword = searchBar.text, !keyword.isEmpty else {
             return
         }
+        searchBar.endEditing(true)
         viewModel.searchRepos(with: keyword)
     }
 }
