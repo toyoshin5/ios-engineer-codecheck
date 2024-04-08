@@ -20,6 +20,7 @@ class MainViewModel: ObservableObject {
                         title: $0.name,
                         owner: $0.owner.login,
                         description: $0.description,
+                        stars: $0.stargazersCount,
                         avatarUrl: $0.owner.avatarUrl
                     )
                 }
