@@ -24,5 +24,15 @@ class TableViewCell: UITableViewCell {
         self.title.text = repo.title
         self.owner.text = repo.owner
         self.descriptionLabel.text = repo.description
+        self.fetchRepoImage(of: repo.avatarUrl)
     }
+    
+    private func fetchRepoImage(of imgURL: String) {
+        ImageFetcher.shared.fetch(from: imgURL, completion: { [weak self] image in
+            DispatchQueue.main.async {
+                self?.ownerImgView.image = image
+            }
+        })
+    }
+    
 }

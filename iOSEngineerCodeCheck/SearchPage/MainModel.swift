@@ -11,4 +11,5 @@ struct Repository {
     let title: String
     let owner: String
     let description: String
+    let avatarUrl: String
 }

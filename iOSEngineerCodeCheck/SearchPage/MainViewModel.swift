@@ -19,7 +19,8 @@ class MainViewModel: ObservableObject {
                         fullName: $0.fullName,
                         title: $0.name,
                         owner: $0.owner.login,
-                        description: $0.description
+                        description: $0.description,
+                        avatarUrl: $0.owner.avatarUrl
                     )
                 }
                 DispatchQueue.main.async {

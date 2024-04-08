@@ -41,6 +41,11 @@
                             <constraint firstAttribute="width" secondItem="jOS-gt-KYm" secondAttribute="height" multiplier="1:1" id="8Q0-5Q-R1d"/>
                             <constraint firstAttribute="width" constant="50" id="hV1-oo-iUx"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6t-mn-BjP">
                         <rect key="frame" x="66" y="50" width="187" height="27"/>
