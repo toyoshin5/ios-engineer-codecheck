@@ -11,13 +11,15 @@ import UIKit
 class TableViewCell: UITableViewCell {
     static let reuseIdentifier: String = "TableViewCell"
     
+    @IBOutlet weak var owner: UILabel!
     @IBOutlet weak var title: UILabel!
     
     static func nib() -> UINib {
         return UINib(nibName: TableViewCell.reuseIdentifier, bundle: nil)
     }
 
-    func bind(title: String) {
-        self.title.text = title
+    func bind(repo: Repository) {
+        self.title.text = repo.title
+        self.owner.text = repo.owner
     }
 }

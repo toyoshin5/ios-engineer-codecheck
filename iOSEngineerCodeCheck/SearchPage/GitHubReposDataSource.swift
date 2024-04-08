@@ -17,7 +17,7 @@ class GitHubReposDataSource: NSObject, UITableViewDataSource {
             return UITableViewCell()
         }
         let repo: Repository = repos[indexPath.row]
-        cell.bind(title: repo.fullName)
+        cell.bind(repo: repo)
         return cell
     }
 }

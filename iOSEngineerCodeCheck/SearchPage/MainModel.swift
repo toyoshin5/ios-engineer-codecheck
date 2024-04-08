@@ -8,4 +8,6 @@
 
 struct Repository {
     let fullName: String
+    let title: String
+    let owner: String
 }
