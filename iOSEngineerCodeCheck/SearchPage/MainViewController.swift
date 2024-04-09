@@ -40,7 +40,14 @@ class MainViewController: UITableViewController {
                 self?.notFoundLabel.isHidden = !isShowNotFound
             }
             .store(in: &cancellables)
-        
+        viewModel.$isShowAlert
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isShowAlert in
+                if let self = self, isShowAlert {
+                    Alert.show(vc: self, title: Constant.errorTitle, message: Constant.errorMessage)
+                }
+            }
+            .store(in: &cancellables)
         setUpLabel()
         setUpLoadingView()
     }

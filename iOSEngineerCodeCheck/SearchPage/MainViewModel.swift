@@ -5,6 +5,8 @@ class MainViewModel: ObservableObject {
     @Published var repos: [Repository] = []
     @Published var isSearching: Bool = false
     @Published var isShowNotFound: Bool = false
+    @Published var isShowAlert: Bool = false
+    
     private let apiClient: APIClient = APIClient(baseURL: URL(string: Constant.githubAPIURL)!)
 
     func searchRepos(with keyword: String) {
@@ -35,8 +37,13 @@ class MainViewModel: ObservableObject {
             case .failure(let error):
                 print(error)
                 isShowNotFound = true
+                isShowAlert = true
+                
             }
             isSearching = false
         }
+    }
+    
+    func showAlert() {
     }
 }

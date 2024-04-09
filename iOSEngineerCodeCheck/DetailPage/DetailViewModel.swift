@@ -14,6 +14,7 @@ class DetailViewModel: ObservableObject {
     @Published var avatarImage: UIImage?
     @Published var readmeText: String?
     @Published var isLoading: Bool = true
+    @Published var isShowAlert: Bool = false
     
     var fullName: String = ""
     var cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
@@ -43,6 +44,7 @@ class DetailViewModel: ObservableObject {
                 self.fetchReadme(branch: response.defaultBranch)
             case .failure(let error):
                 print(error)
+                self.isShowAlert = true
             }
             self.isLoading = false
         })

@@ -30,6 +30,7 @@ class DetailViewController: UIViewController {
     var viewModel: DetailViewModel = DetailViewModel()
     var cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
     
+    // swiftlint: disable function_body_length
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = viewModel.getPreliminalTitle()
@@ -75,13 +76,21 @@ class DetailViewController: UIViewController {
                 }
             })
             .store(in: &cancellables)
-        
+        viewModel.$isShowAlert
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] isShowAlert in
+                if let self = self, isShowAlert {
+                    Alert.show(vc: self, title: Constant.errorTitle, message: Constant.errorMessage)
+                }
+            })
+            .store(in: &cancellables)
         viewModel.fetchDetail()
-        
+
         setUpLoadingView()
         setUpReadmeView()
         
     }
+    // swiftlint: enable function_body_length
     
     private func setUpLoadingView() {
         loadingView.center = view.center

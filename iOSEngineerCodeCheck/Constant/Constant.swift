@@ -13,4 +13,6 @@ class Constant {
     static let searchBarPlaceholder: String = "GitHubのリポジトリを検索できるよー"
     static let repoNotFound: String = "Repository not found"
     static let noReadmeText: String = "README file not found"
+    static let errorTitle: String = "Error"
+    static let errorMessage: String = "Failed to get repositories.\nPlease try again later."
 }
