@@ -35,6 +35,9 @@
 		F0B454CC2BC1900E00405276 /* RepoDetailResponseStub.json in Resources */ = {isa = PBXBuildFile; fileRef = F0B454CB2BC1900E00405276 /* RepoDetailResponseStub.json */; };
 		F0B454CF2BC2F11D00405276 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0B454CE2BC2F11D00405276 /* TableViewCell.xib */; };
 		F0B454D02BC2F11D00405276 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454CD2BC2F11D00405276 /* TableViewCell.swift */; };
+		F0B454D32BC4DAAC00405276 /* GitHubReadmeFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454D22BC4DAAB00405276 /* GitHubReadmeFetcher.swift */; };
+		F0EC2C042BC513490017253C /* MarkdownView in Frameworks */ = {isa = PBXBuildFile; productRef = F0EC2C032BC513490017253C /* MarkdownView */; };
+		F0EC2C062BC51B860017253C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F0EC2C052BC51B860017253C /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -103,6 +106,8 @@
 		F0B454CB2BC1900E00405276 /* RepoDetailResponseStub.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RepoDetailResponseStub.json; sourceTree = "<group>"; };
 		F0B454CD2BC2F11D00405276 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		F0B454CE2BC2F11D00405276 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		F0B454D22BC4DAAB00405276 /* GitHubReadmeFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubReadmeFetcher.swift; sourceTree = "<group>"; };
+		F0EC2C052BC51B860017253C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0EC2C042BC513490017253C /* MarkdownView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +139,7 @@
 		BFD945D2244DC5E80012785A = {
 			isa = PBXGroup;
 			children = (
+				F0EC2C052BC51B860017253C /* Settings.bundle */,
 				F0B454A52BBE349900405276 /* .swiftlint.yml */,
 				BFD945DD244DC5E80012785A /* iOSEngineerCodeCheck */,
 				BFD945F4244DC5EB0012785A /* iOSEngineerCodeCheckTests */,
@@ -245,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				F0B454BB2BC0546200405276 /* ImageFetcher.swift */,
+				F0B454D22BC4DAAB00405276 /* GitHubReadmeFetcher.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -276,6 +284,9 @@
 			dependencies = (
 			);
 			name = iOSEngineerCodeCheck;
+			packageProductDependencies = (
+				F0EC2C032BC513490017253C /* MarkdownView */,
+			);
 			productName = iOSEngineerCodeCheck;
 			productReference = BFD945DB244DC5E80012785A /* iOSEngineerCodeCheck.app */;
 			productType = "com.apple.product-type.application";
@@ -349,6 +360,9 @@
 				Base,
 			);
 			mainGroup = BFD945D2244DC5E80012785A;
+			packageReferences = (
+				F0EC2C022BC513490017253C /* XCRemoteSwiftPackageReference "MarkdownView" */,
+			);
 			productRefGroup = BFD945DC244DC5E80012785A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -371,6 +385,7 @@
 				BFD945E8244DC5EB0012785A /* Assets.xcassets in Resources */,
 				F0B454BE2BC0D73100405276 /* Detail.storyboard in Resources */,
 				BFD945E6244DC5E80012785A /* Main.storyboard in Resources */,
+				F0EC2C062BC51B860017253C /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +440,7 @@
 				F0B454C22BC0F4AE00405276 /* DetailModel.swift in Sources */,
 				F0B454AE2BBEC32C00405276 /* APIRequest.swift in Sources */,
 				BF0A658D244F2A3B00280FA6 /* DetailViewController.swift in Sources */,
+				F0B454D32BC4DAAC00405276 /* GitHubReadmeFetcher.swift in Sources */,
 				F0B454C42BC15F0E00405276 /* MainViewModel.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
 				F0B454B22BBEDA2D00405276 /* SearchRepoAPI.swift in Sources */,
@@ -769,6 +785,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F0EC2C022BC513490017253C /* XCRemoteSwiftPackageReference "MarkdownView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/keitaoouchi/MarkdownView.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.8.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F0EC2C032BC513490017253C /* MarkdownView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F0EC2C022BC513490017253C /* XCRemoteSwiftPackageReference "MarkdownView" */;
+			productName = MarkdownView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BFD945D3244DC5E80012785A /* Project object */;
 }

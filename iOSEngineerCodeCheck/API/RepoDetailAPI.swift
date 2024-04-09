@@ -36,6 +36,7 @@ struct RepoDetailResponse: Decodable {
     let forksCount: Int
     let openIssuesCount: Int
     let htmlUrl: String
+    let defaultBranch: String
     let owner: Owner
     
     private enum CodingKeys: String, CodingKey {
@@ -47,6 +48,7 @@ struct RepoDetailResponse: Decodable {
             case forksCount = "forks_count"
             case openIssuesCount = "open_issues_count"
             case hrmlUrl = "html_url"
+            case defaultBranch = "default_branch"
             case owner
         }
     
@@ -60,6 +62,7 @@ struct RepoDetailResponse: Decodable {
         forksCount = try container.decodeIfPresent(Int.self, forKey: .forksCount) ?? 0
         openIssuesCount = try container.decodeIfPresent(Int.self, forKey: .openIssuesCount) ?? 0
         htmlUrl = try container.decodeIfPresent(String.self, forKey: .hrmlUrl) ?? ""
+        defaultBranch = try container.decodeIfPresent(String.self, forKey: .defaultBranch) ?? ""
         owner = try container.decodeIfPresent(Owner.self, forKey: .owner) ?? Owner(from: decoder)
     }
     

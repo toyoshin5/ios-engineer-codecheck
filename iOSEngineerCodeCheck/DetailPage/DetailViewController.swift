@@ -8,6 +8,7 @@
 
 import UIKit
 import Combine
+import MarkdownView
 
 class DetailViewController: UIViewController {
     @IBOutlet weak var imgView: UIImageView!
@@ -16,9 +17,11 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var watchersLabel: UILabel!
     @IBOutlet weak var forksLabel: UILabel!
     @IBOutlet weak var issuesLabel: UILabel!
-    
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var ownerLabel: UILabel!
+    @IBOutlet weak var readmeView: MarkdownView!
+    
+    @IBOutlet weak var readmeViewHeight: NSLayoutConstraint!
     
     var viewModel: DetailViewModel = DetailViewModel()
     var cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
@@ -26,6 +29,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = viewModel.getPreliminalTitle()
+        
         viewModel.$repository
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] repository in
@@ -42,14 +46,30 @@ class DetailViewController: UIViewController {
                 self.issuesLabel.text = "\(repository.issues) open issues"
             })
             .store(in: &cancellables)
-        viewModel.$image
+        viewModel.$avatarImage
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] image in
                 self?.imgView.image = image
             })
             .store(in: &cancellables)
-        
+        viewModel.$readmeText
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] readme in
+                self?.readmeView.load(markdown: readme)
+            
+            })
+            .store(in: &cancellables)
         viewModel.fetchDetail()
+        
+        setUpReadmeView()
+    }
+    
+    func setUpReadmeView() {
+        readmeView.isScrollEnabled = false
+        readmeView.onRendered = { [weak self] height in
+            self?.readmeViewHeight.constant = height
+            self?.view.setNeedsLayout()
+        }
     }
     
     @IBAction func onTapOpenBrowser(_ sender: Any) {

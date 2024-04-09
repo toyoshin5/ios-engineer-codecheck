@@ -16,11 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VyU-5z-STg">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="always" translatesAutoresizingMaskIntoConstraints="NO" id="VyU-5z-STg">
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hcu-D5-85u">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="1000"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="519"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WqC-8a-RJM">
                                                 <rect key="frame" x="42" y="0.0" width="331" height="20.333333333333332"/>
@@ -57,6 +57,12 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOs-r3-pYg">
                                                 <rect key="frame" x="20" y="26.333333333333329" width="353" height="20.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repository Stats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u48-Gi-OG7">
+                                                <rect key="frame" x="20" y="235" width="353" height="18"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -159,6 +165,12 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="README.md" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nuP-Oi-3oa">
+                                                <rect key="frame" x="20" y="473" width="353" height="18"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgV-Gr-RSg">
                                                 <rect key="frame" x="20" y="409" width="353" height="44"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -171,28 +183,41 @@
                                                     <action selector="onTapOpenBrowser:" destination="tgR-f6-SDF" eventType="touchUpInside" id="zAq-9U-e7m"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repository Stats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u48-Gi-OG7">
-                                                <rect key="frame" x="20" y="235" width="353" height="18"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dje-w3-liL" customClass="MarkdownView" customModule="MarkdownView">
+                                                <rect key="frame" x="20" y="499" width="353" height="0.0"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="tintColor" systemColor="systemYellowColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" id="ZIC-gj-zx8"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Dje-w3-liL" secondAttribute="bottom" constant="20" id="4u8-3B-l9W"/>
                                             <constraint firstItem="mOs-r3-pYg" firstAttribute="top" secondItem="WqC-8a-RJM" secondAttribute="bottom" constant="6" id="52J-y8-JHV"/>
                                             <constraint firstItem="3Fo-Lo-ihs" firstAttribute="leading" secondItem="Hcu-D5-85u" secondAttribute="leading" constant="20" id="7z0-IB-1DA"/>
+                                            <constraint firstItem="nuP-Oi-3oa" firstAttribute="leading" secondItem="Hcu-D5-85u" secondAttribute="leading" constant="20" id="8pf-ia-dTC"/>
+                                            <constraint firstItem="Dje-w3-liL" firstAttribute="leading" secondItem="Hcu-D5-85u" secondAttribute="leading" constant="20" id="J9e-tP-3Hg"/>
                                             <constraint firstItem="qgx-Uj-9dG" firstAttribute="centerX" secondItem="Hcu-D5-85u" secondAttribute="centerX" id="JJh-HU-k0e"/>
                                             <constraint firstItem="VSE-Hc-lGl" firstAttribute="leading" secondItem="Hcu-D5-85u" secondAttribute="leading" constant="20" id="KTb-Eo-vzv"/>
                                             <constraint firstAttribute="trailing" secondItem="3Fo-Lo-ihs" secondAttribute="trailing" constant="20" id="Nm0-T0-wrm"/>
                                             <constraint firstAttribute="trailing" secondItem="sgV-Gr-RSg" secondAttribute="trailing" constant="20" id="QDI-VQ-WCc"/>
-                                            <constraint firstAttribute="height" constant="1000" id="T8O-JM-Ija"/>
+                                            <constraint firstAttribute="trailing" secondItem="nuP-Oi-3oa" secondAttribute="trailing" constant="20" id="S82-cF-jBo"/>
                                             <constraint firstItem="mOs-r3-pYg" firstAttribute="leading" secondItem="Hcu-D5-85u" secondAttribute="leading" constant="20" id="cN5-A2-roD"/>
                                             <constraint firstItem="WqC-8a-RJM" firstAttribute="top" secondItem="Hcu-D5-85u" secondAttribute="top" id="cOi-Wc-1Io"/>
                                             <constraint firstAttribute="trailing" secondItem="VSE-Hc-lGl" secondAttribute="trailing" constant="20" id="cpI-ys-akX"/>
+                                            <constraint firstItem="Dje-w3-liL" firstAttribute="top" secondItem="nuP-Oi-3oa" secondAttribute="bottom" constant="8" id="dc2-Rg-O5Z"/>
                                             <constraint firstItem="WqC-8a-RJM" firstAttribute="leading" secondItem="LR9-iH-Y3Y" secondAttribute="trailing" constant="2" id="fGk-wX-2Ph"/>
                                             <constraint firstAttribute="trailing" secondItem="WqC-8a-RJM" secondAttribute="trailing" constant="20" id="h2C-dS-1BE"/>
                                             <constraint firstItem="LR9-iH-Y3Y" firstAttribute="leading" secondItem="Hcu-D5-85u" secondAttribute="leading" constant="20" id="iRH-55-QE2"/>
+                                            <constraint firstItem="nuP-Oi-3oa" firstAttribute="top" secondItem="sgV-Gr-RSg" secondAttribute="bottom" constant="20" id="iWc-KP-DEf"/>
+                                            <constraint firstAttribute="trailing" secondItem="Dje-w3-liL" secondAttribute="trailing" constant="20" id="mM3-Bo-sJg"/>
                                             <constraint firstItem="u48-Gi-OG7" firstAttribute="leading" secondItem="Hcu-D5-85u" secondAttribute="leading" constant="20" id="mdf-Tx-DHv"/>
                                             <constraint firstItem="qgx-Uj-9dG" firstAttribute="top" secondItem="3Fo-Lo-ihs" secondAttribute="bottom" constant="16" id="mgm-fj-Euc"/>
                                             <constraint firstAttribute="trailing" secondItem="mOs-r3-pYg" secondAttribute="trailing" constant="20" id="nQp-Fa-Iie"/>
@@ -220,7 +245,7 @@
                         <viewLayoutGuide key="safeArea" id="mGd-3D-Mby"/>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="mGd-3D-Mby" firstAttribute="bottom" secondItem="VyU-5z-STg" secondAttribute="bottom" id="3am-kB-N4h"/>
+                            <constraint firstAttribute="bottom" secondItem="VyU-5z-STg" secondAttribute="bottom" id="3am-kB-N4h"/>
                             <constraint firstItem="VyU-5z-STg" firstAttribute="top" secondItem="mGd-3D-Mby" secondAttribute="top" id="eNw-gf-WeD"/>
                             <constraint firstItem="VyU-5z-STg" firstAttribute="leading" secondItem="mGd-3D-Mby" secondAttribute="leading" id="f7Y-bj-a7p"/>
                             <constraint firstItem="mGd-3D-Mby" firstAttribute="trailing" secondItem="VyU-5z-STg" secondAttribute="trailing" id="gqG-6H-MUw"/>
@@ -234,6 +259,8 @@
                         <outlet property="issuesLabel" destination="eaN-ct-0oq" id="9rl-L1-eCM"/>
                         <outlet property="languageLabel" destination="mOs-r3-pYg" id="Oge-dT-yO7"/>
                         <outlet property="ownerLabel" destination="WqC-8a-RJM" id="XYb-yx-KKV"/>
+                        <outlet property="readmeView" destination="Dje-w3-liL" id="mCp-yv-PPJ"/>
+                        <outlet property="readmeViewHeight" destination="ZIC-gj-zx8" id="4ch-cX-tCx"/>
                         <outlet property="starsLabel" destination="1sZ-xy-G2h" id="R3I-Bq-Kab"/>
                         <outlet property="watchersLabel" destination="Fg5-Hb-XsD" id="cJS-ym-UGJ"/>
                     </connections>
