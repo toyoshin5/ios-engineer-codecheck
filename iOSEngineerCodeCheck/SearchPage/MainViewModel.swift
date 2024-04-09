@@ -20,30 +20,35 @@ class MainViewModel: ObservableObject {
             }
             switch result {
             case .success(let response):
-                let repos: [Repository] = response.items.map {
-                    Repository(
-                        fullName: $0.fullName,
-                        title: $0.name,
-                        owner: $0.owner.login,
-                        description: $0.description,
-                        stars: $0.stargazersCount,
-                        avatarUrl: $0.owner.avatarUrl
-                    )
-                }
-                isShowNotFound = repos.isEmpty
-                DispatchQueue.main.async {
-                    self.repos = repos
-                }
+                self.onSearchSuccess(response: response)
             case .failure(let error):
                 print(error)
-                isShowNotFound = true
-                isShowAlert = true
-                
+                self.onSearchFailure()
             }
             isSearching = false
         }
     }
     
-    func showAlert() {
+    private func onSearchSuccess(response: SearchReposResponse) {
+        let repos: [Repository] = response.items.map {
+            Repository(
+                fullName: $0.fullName,
+                title: $0.name,
+                owner: $0.owner.login,
+                description: $0.description,
+                stars: $0.stargazersCount,
+                avatarUrl: $0.owner.avatarUrl
+            )
+        }
+        isShowNotFound = repos.isEmpty
+        DispatchQueue.main.async {
+            self.repos = repos
+        }
     }
+    
+    private func onSearchFailure() {
+        isShowNotFound = true
+        isShowAlert = true
+    }
+    
 }
