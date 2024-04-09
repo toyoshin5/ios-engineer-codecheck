@@ -11,7 +11,8 @@ import Combine
 
 class DetailViewModel: ObservableObject {
     @Published var repository: RepositoryDetail?
-    @Published var image: UIImage?
+    @Published var avatarImage: UIImage?
+    @Published var readmeText: String?
     
     var fullName: String = ""
     var cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
@@ -38,6 +39,7 @@ class DetailViewModel: ObservableObject {
                     htmlUrl: response.htmlUrl
                 )
                 self.fetchRepoImage(of: response.owner.avatarUrl)
+                self.fetchReadme(branch: response.defaultBranch)
             case .failure(let error):
                 print(error)
             }
@@ -47,7 +49,14 @@ class DetailViewModel: ObservableObject {
     
     private func fetchRepoImage(of imgURL: String) {
         ImageFetcher.shared.fetch(from: imgURL, completion: { [weak self] image in
-            self?.image = image
+            self?.avatarImage = image
+        })
+    }
+    
+    private func fetchReadme(branch: String) {
+        GitHubReadmeFetcher.shared.fetchReadme(fullName: self.fullName, branch: branch, completion: { [weak self] readme in
+            print(readme ?? "nil")
+            self?.readmeText = readme
         })
     }
     

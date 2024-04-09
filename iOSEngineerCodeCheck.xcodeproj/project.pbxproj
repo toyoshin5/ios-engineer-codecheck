@@ -35,6 +35,7 @@
 		F0B454CC2BC1900E00405276 /* RepoDetailResponseStub.json in Resources */ = {isa = PBXBuildFile; fileRef = F0B454CB2BC1900E00405276 /* RepoDetailResponseStub.json */; };
 		F0B454CF2BC2F11D00405276 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0B454CE2BC2F11D00405276 /* TableViewCell.xib */; };
 		F0B454D02BC2F11D00405276 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454CD2BC2F11D00405276 /* TableViewCell.swift */; };
+		F0B454D32BC4DAAC00405276 /* GitHubReadmeFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454D22BC4DAAB00405276 /* GitHubReadmeFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -103,6 +104,7 @@
 		F0B454CB2BC1900E00405276 /* RepoDetailResponseStub.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RepoDetailResponseStub.json; sourceTree = "<group>"; };
 		F0B454CD2BC2F11D00405276 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		F0B454CE2BC2F11D00405276 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		F0B454D22BC4DAAB00405276 /* GitHubReadmeFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubReadmeFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				F0B454BB2BC0546200405276 /* ImageFetcher.swift */,
+				F0B454D22BC4DAAB00405276 /* GitHubReadmeFetcher.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				F0B454C22BC0F4AE00405276 /* DetailModel.swift in Sources */,
 				F0B454AE2BBEC32C00405276 /* APIRequest.swift in Sources */,
 				BF0A658D244F2A3B00280FA6 /* DetailViewController.swift in Sources */,
+				F0B454D32BC4DAAC00405276 /* GitHubReadmeFetcher.swift in Sources */,
 				F0B454C42BC15F0E00405276 /* MainViewModel.swift in Sources */,
 				BFD945DF244DC5E80012785A /* AppDelegate.swift in Sources */,
 				F0B454B22BBEDA2D00405276 /* SearchRepoAPI.swift in Sources */,

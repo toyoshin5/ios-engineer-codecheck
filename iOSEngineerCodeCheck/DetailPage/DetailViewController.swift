@@ -42,7 +42,7 @@ class DetailViewController: UIViewController {
                 self.issuesLabel.text = "\(repository.issues) open issues"
             })
             .store(in: &cancellables)
-        viewModel.$image
+        viewModel.$avatarImage
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] image in
                 self?.imgView.image = image
