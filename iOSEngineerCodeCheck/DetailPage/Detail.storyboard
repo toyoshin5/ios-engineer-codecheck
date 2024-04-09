@@ -61,7 +61,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VSE-Hc-lGl">
-                                                <rect key="frame" x="20" y="235" width="353" height="128"/>
+                                                <rect key="frame" x="20" y="261" width="353" height="128"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Nex-E4-QDR">
                                                         <rect key="frame" x="12" y="12" width="329" height="104"/>
@@ -160,7 +160,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgV-Gr-RSg">
-                                                <rect key="frame" x="20" y="383" width="353" height="44"/>
+                                                <rect key="frame" x="20" y="409" width="353" height="44"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="vqd-HI-OV6"/>
@@ -171,6 +171,12 @@
                                                     <action selector="onTapOpenBrowser:" destination="tgR-f6-SDF" eventType="touchUpInside" id="zAq-9U-e7m"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repository Stats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u48-Gi-OG7">
+                                                <rect key="frame" x="20" y="235" width="353" height="18"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                         <constraints>
@@ -181,18 +187,21 @@
                                             <constraint firstAttribute="trailing" secondItem="3Fo-Lo-ihs" secondAttribute="trailing" constant="20" id="Nm0-T0-wrm"/>
                                             <constraint firstAttribute="trailing" secondItem="sgV-Gr-RSg" secondAttribute="trailing" constant="20" id="QDI-VQ-WCc"/>
                                             <constraint firstAttribute="height" constant="1000" id="T8O-JM-Ija"/>
-                                            <constraint firstItem="VSE-Hc-lGl" firstAttribute="top" secondItem="qgx-Uj-9dG" secondAttribute="bottom" constant="20" id="at3-ui-PdD"/>
                                             <constraint firstItem="mOs-r3-pYg" firstAttribute="leading" secondItem="Hcu-D5-85u" secondAttribute="leading" constant="20" id="cN5-A2-roD"/>
                                             <constraint firstItem="WqC-8a-RJM" firstAttribute="top" secondItem="Hcu-D5-85u" secondAttribute="top" id="cOi-Wc-1Io"/>
                                             <constraint firstAttribute="trailing" secondItem="VSE-Hc-lGl" secondAttribute="trailing" constant="20" id="cpI-ys-akX"/>
                                             <constraint firstItem="WqC-8a-RJM" firstAttribute="leading" secondItem="LR9-iH-Y3Y" secondAttribute="trailing" constant="2" id="fGk-wX-2Ph"/>
                                             <constraint firstAttribute="trailing" secondItem="WqC-8a-RJM" secondAttribute="trailing" constant="20" id="h2C-dS-1BE"/>
                                             <constraint firstItem="LR9-iH-Y3Y" firstAttribute="leading" secondItem="Hcu-D5-85u" secondAttribute="leading" constant="20" id="iRH-55-QE2"/>
+                                            <constraint firstItem="u48-Gi-OG7" firstAttribute="leading" secondItem="Hcu-D5-85u" secondAttribute="leading" constant="20" id="mdf-Tx-DHv"/>
                                             <constraint firstItem="qgx-Uj-9dG" firstAttribute="top" secondItem="3Fo-Lo-ihs" secondAttribute="bottom" constant="16" id="mgm-fj-Euc"/>
                                             <constraint firstAttribute="trailing" secondItem="mOs-r3-pYg" secondAttribute="trailing" constant="20" id="nQp-Fa-Iie"/>
+                                            <constraint firstAttribute="trailing" secondItem="u48-Gi-OG7" secondAttribute="trailing" constant="20" id="nXx-Wq-51u"/>
+                                            <constraint firstItem="VSE-Hc-lGl" firstAttribute="top" secondItem="u48-Gi-OG7" secondAttribute="bottom" constant="8" id="qq8-KD-EoU"/>
                                             <constraint firstItem="sgV-Gr-RSg" firstAttribute="top" secondItem="VSE-Hc-lGl" secondAttribute="bottom" constant="20" id="sVy-Kd-ufp"/>
                                             <constraint firstItem="3Fo-Lo-ihs" firstAttribute="top" secondItem="mOs-r3-pYg" secondAttribute="bottom" constant="4" id="wl5-KT-fHt"/>
                                             <constraint firstItem="LR9-iH-Y3Y" firstAttribute="top" secondItem="Hcu-D5-85u" secondAttribute="top" id="xde-jx-Sdv"/>
+                                            <constraint firstItem="u48-Gi-OG7" firstAttribute="top" secondItem="qgx-Uj-9dG" secondAttribute="bottom" constant="20" id="xpa-HV-YuR"/>
                                             <constraint firstItem="sgV-Gr-RSg" firstAttribute="leading" secondItem="Hcu-D5-85u" secondAttribute="leading" constant="20" id="yRo-Ou-jTW"/>
                                         </constraints>
                                     </view>
