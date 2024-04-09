@@ -39,7 +39,7 @@ class DetailViewController: UIViewController {
                 self.navigationItem.title = repository.title
                 self.descriptionLabel.text = repository.description
                 self.ownerLabel.text = repository.owner
-                self.languageLabel.text = (repository.language != nil) ? "Written in \(repository.language!)" : ""
+                self.languageLabel.text = repository.language
                 self.starsLabel.text = "\(repository.stars) stars"
                 self.watchersLabel.text = "\(repository.watchers) watchers"
                 self.forksLabel.text = "\(repository.forks) forks"
