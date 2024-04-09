@@ -28,6 +28,10 @@ class iOSEngineerCodeCheckTests: XCTestCase {
                 XCTAssertEqual(response.items.count, 1)
                 XCTAssertEqual(response.items.first?.name, "swift")
                 XCTAssertEqual(response.items.first?.owner.login, "apple")
+                XCTAssertEqual(response.items.first?.owner.avatarUrl, "https://avatars.githubusercontent.com/u/10639145?v=4")
+                XCTAssertEqual(response.items.first?.description, "The Swift Programming Language")
+                XCTAssertEqual(response.items.first?.stargazersCount, 65750)
+                XCTAssertEqual(response.items.first?.fullName, "apple/swift")
             case .failure(let error):
                 XCTFail(error.localizedDescription)
             }
@@ -46,6 +50,7 @@ class iOSEngineerCodeCheckTests: XCTestCase {
                 XCTAssertEqual(response.language, "C++")
                 XCTAssertEqual(response.openIssuesCount, 7227)
                 XCTAssertEqual(response.owner.avatarUrl, "https://avatars.githubusercontent.com/u/10639145?v=4")
+                XCTAssertEqual(response.description, "The Swift Programming Language")
             case .failure(let error):
                 XCTFail(error.localizedDescription)
             }

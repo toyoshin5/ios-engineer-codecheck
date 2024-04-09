@@ -31,8 +31,8 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
         app.tables["Empty list"].searchFields["GitHubのリポジトリを検索できるよー"].typeText("swift\n")
         app.tables.staticTexts["SwiftLint"].tap()
         //文字が表示されるか
-        XCTAssert(app.staticTexts["realm/SwiftLint"].exists)
-        app.navigationBars["iOSEngineerCodeCheck.DetailView"].buttons["GitHub Search"].tap()
+        XCTAssert(app.staticTexts["realm"].exists)
+        app.navigationBars["SwiftLint"].buttons["GitHub Search"].tap()
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
