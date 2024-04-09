@@ -16,6 +16,7 @@ class GitHubReadmeFetcher {
     
     func fetchReadme(fullName: String, branch: String, completion: @escaping (String?) -> Void) {
         if let url: URL = URL(string: GitHubReadmeFetcher.baseURL + fullName + "/" + branch + "/README.md") {
+            print(url)
             URLSession.shared.dataTask(with: url) { (data, response, _) in
                 guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                     completion(nil)

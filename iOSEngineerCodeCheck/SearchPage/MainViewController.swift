@@ -8,6 +8,9 @@ class MainViewController: UITableViewController {
     private var viewModel: MainViewModel = MainViewModel()
     private var dataSource: GitHubReposDataSource = GitHubReposDataSource()
 
+    private var loadingView: UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
+    private var notFoundLabel: UILabel = UILabel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.placeholder = Constant.searchBarPlaceholder
@@ -20,11 +23,48 @@ class MainViewController: UITableViewController {
         
         viewModel.$repos
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
-                self?.dataSource.update(with: self?.viewModel.repos ?? [])
+            .sink { [weak self] repos in
+                self?.dataSource.update(with: repos)
                 self?.tableView.reloadData()
             }
             .store(in: &cancellables)
+        viewModel.$isSearching
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isSearching in
+                isSearching ? self?.loadingView.startAnimating() : self?.loadingView.stopAnimating()
+            }
+            .store(in: &cancellables)
+        viewModel.$isShowNotFound
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isShowNotFound in
+                self?.notFoundLabel.isHidden = !isShowNotFound
+            }
+            .store(in: &cancellables)
+        viewModel.$isShowAlert
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isShowAlert in
+                if let self = self, isShowAlert {
+                    Alert.show(vc: self, title: Constant.errorTitle, message: Constant.errorMessage)
+                }
+            }
+            .store(in: &cancellables)
+        setUpLabel()
+        setUpLoadingView()
+    }
+    
+    private func setUpLabel() {
+        notFoundLabel.text = Constant.repoNotFound
+        notFoundLabel.frame = CGRect(x: 0, y: 100, width: tableView.bounds.width, height: 20)
+        notFoundLabel.textAlignment = .center
+        notFoundLabel.textColor = .systemGray
+        notFoundLabel.font = .systemFont(ofSize: 20)
+        tableView.addSubview(notFoundLabel)
+    }
+    
+    private func setUpLoadingView() {
+        loadingView.center = CGPoint(x: tableView.bounds.midX, y: 100)
+        loadingView.hidesWhenStopped = true
+        tableView.addSubview(loadingView)
     }
 }
 

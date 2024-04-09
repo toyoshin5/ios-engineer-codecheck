@@ -23,9 +23,14 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var readmeViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var entireContentView: UIView!
+    
+    var loadingView: UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
+    
     var viewModel: DetailViewModel = DetailViewModel()
     var cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
     
+    // swiftlint: disable function_body_length
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = viewModel.getPreliminalTitle()
@@ -39,7 +44,7 @@ class DetailViewController: UIViewController {
                 self.navigationItem.title = repository.title
                 self.descriptionLabel.text = repository.description
                 self.ownerLabel.text = repository.owner
-                self.languageLabel.text = (repository.language != nil) ? "Written in \(repository.language!)" : ""
+                self.languageLabel.text = repository.language
                 self.starsLabel.text = "\(repository.stars) stars"
                 self.watchersLabel.text = "\(repository.watchers) watchers"
                 self.forksLabel.text = "\(repository.forks) forks"
@@ -59,9 +64,38 @@ class DetailViewController: UIViewController {
             
             })
             .store(in: &cancellables)
+        viewModel.$isLoading
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] isLoading in
+                if isLoading {
+                    self?.loadingView.startAnimating()
+                    self?.entireContentView.isHidden = true
+                } else {
+                    self?.loadingView.stopAnimating()
+                    self?.entireContentView.isHidden = false
+                }
+            })
+            .store(in: &cancellables)
+        viewModel.$isShowAlert
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] isShowAlert in
+                if let self = self, isShowAlert {
+                    Alert.show(vc: self, title: Constant.errorTitle, message: Constant.errorMessage)
+                }
+            })
+            .store(in: &cancellables)
         viewModel.fetchDetail()
-        
+
+        setUpLoadingView()
         setUpReadmeView()
+        
+    }
+    // swiftlint: enable function_body_length
+    
+    private func setUpLoadingView() {
+        loadingView.center = view.center
+        loadingView.hidesWhenStopped = true
+        view.addSubview(loadingView)
     }
     
     func setUpReadmeView() {
