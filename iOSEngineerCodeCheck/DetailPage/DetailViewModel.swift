@@ -61,6 +61,4 @@ class DetailViewModel: ObservableObject {
         }
         UIApplication.shared.open(url)
     }
-
-    
 }
