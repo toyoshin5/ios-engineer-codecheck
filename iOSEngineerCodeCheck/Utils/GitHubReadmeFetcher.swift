@@ -10,7 +10,7 @@ import Foundation
 class GitHubReadmeFetcher {
     static let shared: GitHubReadmeFetcher = GitHubReadmeFetcher()
     
-    static let baseURL: String = "https://raw.githubusercontent.com/"
+    static let baseURL: String = Constant.githubContentAPIURL
     
     private init() {}
     
