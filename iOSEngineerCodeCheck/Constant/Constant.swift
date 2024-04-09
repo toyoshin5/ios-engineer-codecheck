@@ -12,4 +12,5 @@ class Constant {
     static let githubContentAPIURL: String = "https://raw.githubusercontent.com/"
     static let searchBarPlaceholder: String = "GitHubのリポジトリを検索できるよー"
     static let repoNotFound: String = "Repository not found"
+    static let noReadmeText: String = "README file not found"
 }

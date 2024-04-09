@@ -23,6 +23,10 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var readmeViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var entireContentView: UIView!
+    
+    var loadingView: UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
+    
     var viewModel: DetailViewModel = DetailViewModel()
     var cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
     
@@ -59,9 +63,30 @@ class DetailViewController: UIViewController {
             
             })
             .store(in: &cancellables)
+        viewModel.$isLoading
+            .receive(on: DispatchQueue.main)
+            .sink(receiveValue: { [weak self] isLoading in
+                if isLoading {
+                    self?.loadingView.startAnimating()
+                    self?.entireContentView.isHidden = true
+                } else {
+                    self?.loadingView.stopAnimating()
+                    self?.entireContentView.isHidden = false
+                }
+            })
+            .store(in: &cancellables)
+        
         viewModel.fetchDetail()
         
+        setUpLoadingView()
         setUpReadmeView()
+        
+    }
+    
+    private func setUpLoadingView() {
+        loadingView.center = view.center
+        loadingView.hidesWhenStopped = true
+        view.addSubview(loadingView)
     }
     
     func setUpReadmeView() {

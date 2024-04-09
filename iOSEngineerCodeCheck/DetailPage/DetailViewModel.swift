@@ -13,6 +13,7 @@ class DetailViewModel: ObservableObject {
     @Published var repository: RepositoryDetail?
     @Published var avatarImage: UIImage?
     @Published var readmeText: String?
+    @Published var isLoading: Bool = true
     
     var fullName: String = ""
     var cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
@@ -43,6 +44,7 @@ class DetailViewModel: ObservableObject {
             case .failure(let error):
                 print(error)
             }
+            self.isLoading = false
         })
     
     }
@@ -56,7 +58,7 @@ class DetailViewModel: ObservableObject {
     private func fetchReadme(branch: String) {
         GitHubReadmeFetcher.shared.fetchReadme(fullName: self.fullName, branch: branch, completion: { [weak self] readme in
             if readme?.isEmpty ?? true {
-                self?.readmeText = "README not found"
+                self?.readmeText = Constant.noReadmeText
             } else {
                 self?.readmeText = readme
             }
