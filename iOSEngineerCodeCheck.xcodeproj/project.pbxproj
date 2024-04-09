@@ -37,6 +37,7 @@
 		F0B454D02BC2F11D00405276 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454CD2BC2F11D00405276 /* TableViewCell.swift */; };
 		F0B454D32BC4DAAC00405276 /* GitHubReadmeFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454D22BC4DAAB00405276 /* GitHubReadmeFetcher.swift */; };
 		F0EC2C042BC513490017253C /* MarkdownView in Frameworks */ = {isa = PBXBuildFile; productRef = F0EC2C032BC513490017253C /* MarkdownView */; };
+		F0EC2C062BC51B860017253C /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F0EC2C052BC51B860017253C /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -106,6 +107,7 @@
 		F0B454CD2BC2F11D00405276 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		F0B454CE2BC2F11D00405276 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		F0B454D22BC4DAAB00405276 /* GitHubReadmeFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubReadmeFetcher.swift; sourceTree = "<group>"; };
+		F0EC2C052BC51B860017253C /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 		BFD945D2244DC5E80012785A = {
 			isa = PBXGroup;
 			children = (
+				F0EC2C052BC51B860017253C /* Settings.bundle */,
 				F0B454A52BBE349900405276 /* .swiftlint.yml */,
 				BFD945DD244DC5E80012785A /* iOSEngineerCodeCheck */,
 				BFD945F4244DC5EB0012785A /* iOSEngineerCodeCheckTests */,
@@ -382,6 +385,7 @@
 				BFD945E8244DC5EB0012785A /* Assets.xcassets in Resources */,
 				F0B454BE2BC0D73100405276 /* Detail.storyboard in Resources */,
 				BFD945E6244DC5E80012785A /* Main.storyboard in Resources */,
+				F0EC2C062BC51B860017253C /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
