@@ -55,8 +55,11 @@ class DetailViewModel: ObservableObject {
     
     private func fetchReadme(branch: String) {
         GitHubReadmeFetcher.shared.fetchReadme(fullName: self.fullName, branch: branch, completion: { [weak self] readme in
-            print(readme ?? "nil")
-            self?.readmeText = readme
+            if readme?.isEmpty ?? true {
+                self?.readmeText = "README not found"
+            } else {
+                self?.readmeText = readme
+            }
         })
     }
     
