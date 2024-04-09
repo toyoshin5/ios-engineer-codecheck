@@ -8,4 +8,9 @@
 
 struct Repository {
     let fullName: String
+    let title: String
+    let owner: String
+    let description: String
+    let stars: Int
+    let avatarUrl: String
 }

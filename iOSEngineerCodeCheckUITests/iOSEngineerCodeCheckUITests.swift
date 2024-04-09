@@ -29,13 +29,10 @@ class iOSEngineerCodeCheckUITests: XCTestCase {
         app.launch()
         app.tables["Empty list"].searchFields["GitHubのリポジトリを検索できるよー"].tap()
         app.tables["Empty list"].searchFields["GitHubのリポジトリを検索できるよー"].typeText("swift\n")
-        app.tables/*@START_MENU_TOKEN@*/.staticTexts["apple/swift"]/*[[".cells.staticTexts[\"apple\/swift\"]",".staticTexts[\"apple\/swift\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.tables.staticTexts["SwiftLint"].tap()
         //文字が表示されるか
-        XCTAssert(app.staticTexts["apple/swift"].exists)
-        app.navigationBars["iOSEngineerCodeCheck.DetailView"].buttons["Root View Controller"].tap()
-        app.tables.staticTexts["realm/SwiftLint"].tap()
-        //文字が表示されるか
-        XCTAssert(app.staticTexts["realm/SwiftLint"].exists)
+        XCTAssert(app.staticTexts["realm"].exists)
+        app.navigationBars["SwiftLint"].buttons["GitHub Search"].tap()
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }

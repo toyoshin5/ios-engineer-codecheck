@@ -11,26 +11,31 @@ import Combine
 
 class DetailViewController: UIViewController {
     @IBOutlet weak var imgView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var languageLabel: UILabel!
     @IBOutlet weak var starsLabel: UILabel!
     @IBOutlet weak var watchersLabel: UILabel!
     @IBOutlet weak var forksLabel: UILabel!
     @IBOutlet weak var issuesLabel: UILabel!
     
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var ownerLabel: UILabel!
+    
     var viewModel: DetailViewModel = DetailViewModel()
     var cancellables: Set<AnyCancellable> = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.titleLabel.text = viewModel.fullName
+        navigationItem.title = viewModel.getPreliminalTitle()
         viewModel.$repository
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] repository in
                 guard let self = self, let repository = repository else {
                     return
                 }
-                self.languageLabel.text = "Written in \(repository.language)"
+                self.navigationItem.title = repository.title
+                self.descriptionLabel.text = repository.description
+                self.ownerLabel.text = repository.owner
+                self.languageLabel.text = (repository.language != nil) ? "Written in \(repository.language!)" : ""
                 self.starsLabel.text = "\(repository.stars) stars"
                 self.watchersLabel.text = "\(repository.watchers) watchers"
                 self.forksLabel.text = "\(repository.forks) forks"
@@ -45,5 +50,9 @@ class DetailViewController: UIViewController {
             .store(in: &cancellables)
         
         viewModel.fetchDetail()
+    }
+    
+    @IBAction func onTapOpenBrowser(_ sender: Any) {
+        viewModel.openWithBrowser()
     }
 }

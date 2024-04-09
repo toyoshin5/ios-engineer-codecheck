@@ -27,11 +27,15 @@ class DetailViewModel: ObservableObject {
             switch result {
             case .success(let response):
                 self.repository = RepositoryDetail(
+                    title: response.name,
+                    owner: response.owner.login,
                     language: response.language,
+                    description: response.description,
                     stars: response.stargazersCount,
                     watchers: response.subscribersCount,
                     forks: response.forksCount,
-                    issues: response.openIssuesCount
+                    issues: response.openIssuesCount,
+                    htmlUrl: response.htmlUrl
                 )
                 self.fetchRepoImage(of: response.owner.avatarUrl)
             case .failure(let error):
@@ -45,5 +49,16 @@ class DetailViewModel: ObservableObject {
         ImageFetcher.shared.fetch(from: imgURL, completion: { [weak self] image in
             self?.image = image
         })
+    }
+    
+    func getPreliminalTitle() -> String {
+        return self.fullName.split(separator: "/").last.map(String.init) ?? ""
+    }
+    
+    func openWithBrowser() {
+        guard let url = URL(string: repository?.htmlUrl ?? "") else {
+            return
+        }
+        UIApplication.shared.open(url)
     }
 }

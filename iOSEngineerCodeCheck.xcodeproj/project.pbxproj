@@ -33,6 +33,8 @@
 		F0B454C82BC18A8000405276 /* StubAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454C72BC18A8000405276 /* StubAPIClient.swift */; };
 		F0B454CA2BC18B3800405276 /* SearchRepoResponseStub.json in Resources */ = {isa = PBXBuildFile; fileRef = F0B454C92BC18B3800405276 /* SearchRepoResponseStub.json */; };
 		F0B454CC2BC1900E00405276 /* RepoDetailResponseStub.json in Resources */ = {isa = PBXBuildFile; fileRef = F0B454CB2BC1900E00405276 /* RepoDetailResponseStub.json */; };
+		F0B454CF2BC2F11D00405276 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0B454CE2BC2F11D00405276 /* TableViewCell.xib */; };
+		F0B454D02BC2F11D00405276 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B454CD2BC2F11D00405276 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -99,6 +101,8 @@
 		F0B454C72BC18A8000405276 /* StubAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubAPIClient.swift; sourceTree = "<group>"; };
 		F0B454C92BC18B3800405276 /* SearchRepoResponseStub.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchRepoResponseStub.json; sourceTree = "<group>"; };
 		F0B454CB2BC1900E00405276 /* RepoDetailResponseStub.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RepoDetailResponseStub.json; sourceTree = "<group>"; };
+		F0B454CD2BC2F11D00405276 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		F0B454CE2BC2F11D00405276 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				BFD945E4244DC5E80012785A /* Main.storyboard */,
+				F0B454D12BC370D100405276 /* TableViewCell */,
 				BFD945E2244DC5E80012785A /* MainViewController.swift */,
 				F0B454B62BBFB0CD00405276 /* GitHubReposDataSource.swift */,
 				F0B454C32BC15F0E00405276 /* MainViewModel.swift */,
@@ -242,6 +247,15 @@
 				F0B454BB2BC0546200405276 /* ImageFetcher.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		F0B454D12BC370D100405276 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				F0B454CD2BC2F11D00405276 /* TableViewCell.swift */,
+				F0B454CE2BC2F11D00405276 /* TableViewCell.xib */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0B454A62BBE349900405276 /* .swiftlint.yml in Resources */,
+				F0B454CF2BC2F11D00405276 /* TableViewCell.xib in Resources */,
 				BFD945EB244DC5EB0012785A /* LaunchScreen.storyboard in Resources */,
 				BFD945E8244DC5EB0012785A /* Assets.xcassets in Resources */,
 				F0B454BE2BC0D73100405276 /* Detail.storyboard in Resources */,
@@ -418,6 +433,7 @@
 				F0B454A82BBE4EE600405276 /* Collection+Extension.swift in Sources */,
 				F0B454C02BC0F4A100405276 /* DetailViewModel.swift in Sources */,
 				F0B454BC2BC0546200405276 /* ImageFetcher.swift in Sources */,
+				F0B454D02BC2F11D00405276 /* TableViewCell.swift in Sources */,
 				F0B454AB2BBEAADF00405276 /* APIClient.swift in Sources */,
 				F0B454B72BBFB0CD00405276 /* GitHubReposDataSource.swift in Sources */,
 			);

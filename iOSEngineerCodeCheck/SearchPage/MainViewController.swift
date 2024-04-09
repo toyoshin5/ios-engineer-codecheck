@@ -12,8 +12,12 @@ class MainViewController: UITableViewController {
         super.viewDidLoad()
         searchBar.placeholder = Constant.searchBarPlaceholder
         searchBar.delegate = self
+        // 検索バーの水平マージンを設定
+        searchBar.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
+        
         tableView.dataSource = dataSource
-
+        tableView.register(TableViewCell.nib(), forCellReuseIdentifier: TableViewCell.reuseIdentifier)
+        
         viewModel.$repos
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
@@ -33,6 +37,7 @@ extension MainViewController {
             detail.viewModel.fullName = repo.fullName
         }
     }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let repo = viewModel.repos[safe: indexPath.row] {
             performSegue(withIdentifier: "Detail", sender: repo)
@@ -46,6 +51,7 @@ extension MainViewController: UISearchBarDelegate {
         guard let keyword = searchBar.text, !keyword.isEmpty else {
             return
         }
+        searchBar.endEditing(true)
         viewModel.searchRepos(with: keyword)
     }
 }
