@@ -3,10 +3,14 @@ import Foundation
 
 class MainViewModel: ObservableObject {
     @Published var repos: [Repository] = []
-
+    @Published var isSearching: Bool = false
+    @Published var isShowNotFound: Bool = false
     private let apiClient: APIClient = APIClient(baseURL: URL(string: Constant.githubAPIURL)!)
 
     func searchRepos(with keyword: String) {
+        isSearching = true
+        isShowNotFound = false
+        repos = []
         let request: SearchReposRequest = SearchReposRequest(keyword: keyword)
         apiClient.send(request) { [weak self] result in
             guard let self = self else {
@@ -24,12 +28,15 @@ class MainViewModel: ObservableObject {
                         avatarUrl: $0.owner.avatarUrl
                     )
                 }
+                isShowNotFound = repos.isEmpty
                 DispatchQueue.main.async {
                     self.repos = repos
                 }
             case .failure(let error):
                 print(error)
+                isShowNotFound = true
             }
+            isSearching = false
         }
     }
 }
